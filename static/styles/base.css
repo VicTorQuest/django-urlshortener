@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Fruktur&family=Josefin+Sans:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap');
+
+body {
+    box-sizing: border-box;    
+    font-family: 'Fruktur', cursive;
+    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Prompt', sans-serif;
+}
+
+
+header {
+    margin: 0;
+    background-color: rgb(160, 70, 243);
+    overflow: hidden;
+}
+
+.main-header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+}
+
+.main-header h1 {
+    font-size: 1.3rem !important;
+}
+
+.main-header h2 {
+    font-size: 2.5rem !important;
+    font-weight: 700;
+}
+
+
+.main-header h3 {
+    font-size: 1.3rem !important;
+    font-weight: 400;
+}
+
+.phone {
+    height: 450px;
+    width: 280px;
+}
+
+.navbar-brand, .nav-item .nav-link {
+    color: white !important;
+}
+
+.dropdown-menu a {
+    color: white !important
+}
+
+.dropdown-menu a:hover {
+    background-color: blueviolet;
+}
+
+.log-in {
+    transition: 0.3s linear;
+}
+
+.log-in:hover {
+    background-color: white;
+    color: black !important;
+}
+
+
+.spacer {
+    aspect-ratio: 960/300;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+
+.wave {
+    background-image: url(/static/img/wave2.svg);
+}
+
+input:focus{
+    outline: none !important;
+}
+
+.url-input:focus {
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    border: 2px solid #dee2e6;
+}
+
+
+.submit-btn {
+    background-color: #a046f3;
+    color: white;
+}

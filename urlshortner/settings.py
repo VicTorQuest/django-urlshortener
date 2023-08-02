@@ -25,7 +25,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['tirr.com', 'www.tirr.com', '127.0.0.1']
+# ALLOWED_HOSTS = ['tirr.com', 'www.tirr.com', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,7 +43,8 @@ INSTALLED_APPS = [
     "django_hosts",
 
     #my app
-    'application',
+    'analytics',
+    'shortener',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +62,8 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'urlshortner.urls'
 ROOT_HOSTCONF = 'urlshortner.hosts'
 DEFAULT_HOST = 'www'
-DEFAULT_REDIRECT_URL = 'http://www.tirr.com:8000'
+DEFAULT_REDIRECT_URL = 'http://127.0.0.1:8000'
+PARENT_HOST = '127.0.0.1:8000'
 
 TEMPLATES = [
     {

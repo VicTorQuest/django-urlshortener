@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Sucessfully Created</h1>
+    <p>{{ obj.url }}</p>
+    <a target="_blank" href="{{obj.get_shortened_url}}">{{ obj.get_shortened_url }}</a>
+    
+
+    <a href="{% url 'home' %}">Create another</a>
+
+    
+</body>
+</html>

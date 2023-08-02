@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URL Shortener</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        input[type="url"] {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+        .short-url {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .short-url a {
+            font-size: 20px;
+            color: #007bff;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        .qr-code {
+            margin-top: 20px;
+        }
+        .qr-code img {
+            max-width: 200px;
+        }
+        footer {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>URL Shortener</h1>
+        <p>Shorten your long URLs and share them easily!</p>
+    </header>
+
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            <input type="url" name="original_url" placeholder="Enter your URL here" required>
+            <button type="submit">Shorten</button>
+        </form>
+
+        {% if short_url %}
+            <div class="short-url">
+                <a href="{{ short_url }}" target="_blank">{{ request.build_absolute_uri }}{{ short_url }}</a>
+            </div>
+
+            {% if qr_code %}
+                <div class="qr-code">
+                    <img src="data:image/png;base64,{{ qr_code|base64 }}" alt="QR Code">
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <footer>
+        &copy; 2023 Your URL Shortener. All rights reserved.
+    </footer>
+</body>
+</html>

@@ -1,0 +1,141 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'styles/base.css' %}">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-white nav">
+      <div class="container">
+        <a class="navbar-brand text-bold" href="{% url 'home' %}">Tynie</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link py-1 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Features
+              </a>
+              <ul class="dropdown-menu" style="background-color: #a046f3;">
+                <li><a class="dropdown-item text-secondary" href="#">Link-in-bio</a></li>
+                <li><a class="dropdown-item text-dark" href="#">URL Shortener</a></li>
+                <li><a class="dropdown-item text-dark" href="#">Qr Code Generator</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link me-2 py-1 border border-white rounded log-in"
+                aria-current="page" href="">Log In</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link py-1 border border-dark bg-dark rounded {% if '/edit-preference/' in request.path %}active{% endif %}"
+                 href="">Sign Up</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <section class="mt-4 main-header pb-0 container">
+      <div class="row">
+        <div class="col-md-7 my-auto mx-auto">
+          <h1 class="text-white">Free URL Shortener</h1>
+          <h2 class="">Elevate <i>Engagement</i><br> with Concise Links!</h2>
+          <h3 class="text-left text-white">Transform long URLs into sleek and shareable links, bidding farewell to
+            cumbersome web addresses. Effortlessly condense URLs, maximize impact, and reach your audience faster and
+            with style.</h3>
+          <div class="mt-3"> <a href="register" class="btn btn-light">Sign Up</a> <a href="pro-pricing"
+              class="btn text-white bg-dark">Pricing</a> </div>
+        </div>
+
+
+        <div class="col-md-5 text-center">
+          <div class="img-area">
+            <img class="phone" src="{% static 'img/img.png' %}" alt="">
+          </div>
+        </div>
+      </div>
+
+
+
+    </section>
+    <svg viewBox="0 0 960 300" width="120%" height="100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+      <path id="wave1-1"
+        d="M0 146L22.8 146.2C45.7 146.3 91.3 146.7 137 148C182.7 149.3 228.3 151.7 274 140.2C319.7 128.7 365.3 103.3 411.2 91.2C457 79 503 80 548.8 79.7C594.7 79.3 640.3 77.7 686 79.3C731.7 81 777.3 86 823 92.3C868.7 98.7 914.3 106.3 937.2 110.2L960 114L960 301L937.2 301C914.3 301 868.7 301 823 301C777.3 301 731.7 301 686 301C640.3 301 594.7 301 548.8 301C503 301 457 301 411.2 301C365.3 301 319.7 301 274 301C228.3 301 182.7 301 137 301C91.3 301 45.7 301 22.8 301L0 301Z"
+        fill="#9a62cf"></path>
+      <path id="wave1-2"
+        d="M0 138L22.8 145.7C45.7 153.3 91.3 168.7 137 164.7C182.7 160.7 228.3 137.3 274 133.7C319.7 130 365.3 146 411.2 146.7C457 147.3 503 132.7 548.8 125.7C594.7 118.7 640.3 119.3 686 119C731.7 118.7 777.3 117.3 823 128.7C868.7 140 914.3 164 937.2 176L960 188L960 301L937.2 301C914.3 301 868.7 301 823 301C777.3 301 731.7 301 686 301C640.3 301 594.7 301 548.8 301C503 301 457 301 411.2 301C365.3 301 319.7 301 274 301C228.3 301 182.7 301 137 301C91.3 301 45.7 301 22.8 301L0 301Z"
+        fill="#b588dc"></path>
+      <path id="wave1-3"
+        d="M0 163L22.8 162.8C45.7 162.7 91.3 162.3 137 168.3C182.7 174.3 228.3 186.7 274 192.5C319.7 198.3 365.3 197.7 411.2 197.3C457 197 503 197 548.8 196.3C594.7 195.7 640.3 194.3 686 197.3C731.7 200.3 777.3 207.7 823 206.7C868.7 205.7 914.3 196.3 937.2 191.7L960 187L960 301L937.2 301C914.3 301 868.7 301 823 301C777.3 301 731.7 301 686 301C640.3 301 594.7 301 548.8 301C503 301 457 301 411.2 301C365.3 301 319.7 301 274 301C228.3 301 182.7 301 137 301C91.3 301 45.7 301 22.8 301L0 301Z"
+        fill="#cfafe8"></path>
+      <path id="wave1-4"
+        d="M0 236L22.8 229.8C45.7 223.7 91.3 211.3 137 207.5C182.7 203.7 228.3 208.3 274 215.8C319.7 223.3 365.3 233.7 411.2 237.2C457 240.7 503 237.3 548.8 229C594.7 220.7 640.3 207.3 686 207.3C731.7 207.3 777.3 220.7 823 225C868.7 229.3 914.3 224.7 937.2 222.3L960 220L960 301L937.2 301C914.3 301 868.7 301 823 301C777.3 301 731.7 301 686 301C640.3 301 594.7 301 548.8 301C503 301 457 301 411.2 301C365.3 301 319.7 301 274 301C228.3 301 182.7 301 137 301C91.3 301 45.7 301 22.8 301L0 301Z"
+        fill="#e7d7f4"></path>
+      <path id="wave1-5"
+        d="M0 270L22.8 265.5C45.7 261 91.3 252 137 252C182.7 252 228.3 261 274 266C319.7 271 365.3 272 411.2 268.8C457 265.7 503 258.3 548.8 253.3C594.7 248.3 640.3 245.7 686 245.7C731.7 245.7 777.3 248.3 823 251.5C868.7 254.7 914.3 258.3 937.2 260.2L960 262L960 301L937.2 301C914.3 301 868.7 301 823 301C777.3 301 731.7 301 686 301C640.3 301 594.7 301 548.8 301C503 301 457 301 411.2 301C365.3 301 319.7 301 274 301C228.3 301 182.7 301 137 301C91.3 301 45.7 301 22.8 301L0 301Z"
+        fill="#ffffff"></path>
+
+      <path id="wave2-1" style="visibility:hidden"
+        d="M0 132L25 140.2C50 148.3 100 164.7 150 176.8C200 189 250 197 300 186.3C350 175.7 400 146.3 450 131C500 115.7 550 114.3 600 124.5C650 134.7 700 156.3 750 156.8C800 157.3 850 136.7 875 126.3L900 116L900 301L875 301C850 301 800 301 750 301C700 301 650 301 600 301C550 301 500 301 450 301C400 301 350 301 300 301C250 301 200 301 150 301C100 301 50 301 25 301L0 301Z"
+        fill="#9a62cf"></path>
+      <path id="wave2-2" style="visibility:hidden"
+        d="M0 219L25 207.8C50 196.7 100 174.3 150 175.5C200 176.7 250 201.3 300 205.5C350 209.7 400 193.3 450 187.3C500 181.3 550 185.7 600 180C650 174.3 700 158.7 750 160.5C800 162.3 850 181.7 875 191.3L900 201L900 301L875 301C850 301 800 301 750 301C700 301 650 301 600 301C550 301 500 301 450 301C400 301 350 301 300 301C250 301 200 301 150 301C100 301 50 301 25 301L0 301Z"
+        fill="#b588dc"></path>
+      <path id="wave2-3" style="visibility:hidden"
+        d="M0 195L25 195.7C50 196.3 100 197.7 150 201.2C200 204.7 250 210.3 300 216.3C350 222.3 400 228.7 450 232.2C500 235.7 550 236.3 600 234.8C650 233.3 700 229.7 750 230.5C800 231.3 850 236.7 875 239.3L900 242L900 301L875 301C850 301 800 301 750 301C700 301 650 301 600 301C550 301 500 301 450 301C400 301 350 301 300 301C250 301 200 301 150 301C100 301 50 301 25 301L0 301Z"
+        fill="#cfafe8"></path>
+      <path id="wave2-4" style="visibility:hidden"
+        d="M0 262L25 257.7C50 253.3 100 244.7 150 238.8C200 233 250 230 300 229C350 228 400 229 450 226.5C500 224 550 218 600 219.8C650 221.7 700 231.3 750 239.8C800 248.3 850 255.7 875 259.3L900 263L900 301L875 301C850 301 800 301 750 301C700 301 650 301 600 301C550 301 500 301 450 301C400 301 350 301 300 301C250 301 200 301 150 301C100 301 50 301 25 301L0 301Z"
+        fill="#e7d7f4"></path>
+      <path id="wave2-5" style="visibility:hidden"
+        d="M0 277L25 278.5C50 280 100 283 150 284.8C200 286.7 250 287.3 300 282.3C350 277.3 400 266.7 450 263.8C500 261 550 266 600 265.5C650 265 700 259 750 254.2C800 249.3 850 245.7 875 243.8L900 242L900 301L875 301C850 301 800 301 750 301C700 301 650 301 600 301C550 301 500 301 450 301C400 301 350 301 300 301C250 301 200 301 150 301C100 301 50 301 25 301L0 301Z"
+        fill="#ffffff"></path>
+    </svg>
+
+
+    <!-- <div class="spacer wave"></div> -->
+
+  </header>
+
+
+  <div class="my-5 container">   
+    <form action="." method="post">
+        {% csrf_token %}
+        <div class="input-group shadow mb-3">
+          <input type="url" class="form-control border-2 p-3 url-input" placeholder="Enter your URL here" aria-label="URL" aria-describedby="button-addon2">
+          <button class="btn submit-btn px-4" type="submit" id="button-addon2">Shorten URL</button>
+        </div>
+    </form>
+    <p class="text-center" style="text-align: center;"><small>Simplify Sharing with Short URLs</small></p>
+  </div>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/kute.js@2.2.4/dist/kute.min.js"
+    integrity="sha256-ekq8UIBrOC1lgaJmRRV/c50s5Hy/EBKjBD/7nM9dvp0=" crossorigin="anonymous"></script>
+  <script>
+    const tween = KUTE.fromTo('#wave1-1', { path: '#wave1-1' }, { path: '#wave2-1' }, { repeat: 999, duration: 3000, yoyo: true }).start();
+    const tween2 = KUTE.fromTo('#wave1-2', { path: '#wave1-2' }, { path: '#wave2-2' }, { repeat: 999, duration: 3000, yoyo: true }).start();
+    const tween3 = KUTE.fromTo('#wave1-3', { path: '#wave1-3' }, { path: '#wave2-3' }, { repeat: 999, duration: 3000, yoyo: true }).start();
+    const tween4 = KUTE.fromTo('#wave1-4', { path: '#wave1-4' }, { path: '#wave2-4' }, { repeat: 999, duration: 3000, yoyo: true }).start();
+    const tween5 = KUTE.fromTo('#wave1-5', { path: '#wave1-5' }, { path: '#wave2-5' }, { repeat: 999, duration: 3000, yoyo: true }).start();
+  </script>
+</body>
+
+</html>

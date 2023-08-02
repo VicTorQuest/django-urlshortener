@@ -1,0 +1,50 @@
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
+from django.views import View
+from .models import Link
+from .forms import SubmitUrl
+from .utils import get_client_ip
+from django.contrib import messages
+from analytics.models import Click
+
+# Create your views here.
+class home(View):
+    def get(self, request, *args, **kwargs):
+        form = SubmitUrl()
+        return render(request, 'shortener/home.html', {"form": form})
+
+    def post(self, request, *args, **kwargs):
+        form = SubmitUrl(request.POST or None)
+        template = 'shortener/home.html'
+        context = {'form': form}
+        if form.is_valid():
+            newurl = form.cleaned_data.get('url')
+            obj, created = Link.objects.get_or_create(url=newurl)
+            obj.get_total_clicks
+            context = {
+                'obj': obj,
+                'created': created
+            }
+            if created:
+                template = 'shortener/success.html'
+            else:
+                template = 'shortener/exists.html'
+
+        
+        # if request.POST.get('url') != "":
+        #     url = request.POST.get('url')
+        #     messages.success(request, "Your url '{}' was submitted".format(url))
+        # else:
+        #     messages.error(request, 'Empty or invalid url')
+        #     url = ''
+        # print(url)
+        
+        return render(request, template, context)
+
+class UrlRedirectView(View):
+    def get(self, request,  shortcode, *args, **kwargs):
+        obj = get_object_or_404(Link, shortcode=shortcode)
+        ip_address = get_client_ip(request)
+        Click.objects.create(clicked_url=obj, ip_address=ip_address)
+        return HttpResponseRedirect(obj.url)
+
