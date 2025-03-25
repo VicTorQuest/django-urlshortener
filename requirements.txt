@@ -3,5 +3,6 @@ Django==4.0.3
 django-dotenv==1.4.2
 django-hosts==5.1
 polls==0.1
+setuptools==75.8.0
 sqlparse==0.4.2
 tzdata==2021.5

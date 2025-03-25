@@ -5,57 +5,67 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Shorten & Transform long links into sleek and shareable URLs for a smarter way of sharing your content.">
-  
-  
+  <meta name="description"
+    content="Shorten & Transform long links into sleek and shareable URLs for a smarter way of sharing your content.">
+
+
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="Free URL Shortener; Custom short links and analytics">
-  <meta property="og:description" content="Shorten & Transform long links into sleek and shareable URLs for a smarter way of sharing your content.">
+  <meta property="og:description"
+    content="Shorten & Transform long links into sleek and shareable URLs for a smarter way of sharing your content.">
   <meta property="og:image" content="{% static 'img/og-img.png' %}">
   <meta property="og:url" content="{{request.build_absolute_url}}">
   <meta property="og:type" content="website">
+
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free URL Shortener; Custom short links and analytics">
+  <meta name="twitter:description"
+    content="Shorten & Transform long links into sleek and shareable URLs for a smarter way of sharing your content.">
+  <meta name="twitter:image" content="{% static 'img/og-img.png' %}">
+
   
-
-   <!-- Twitter Card Meta Tags -->
-   <meta name="twitter:card" content="summary_large_image">
-   <meta name="twitter:title" content="Free URL Shortener; Custom short links and analytics">
-   <meta name="twitter:description" content="Shorten & Transform long links into sleek and shareable URLs for a smarter way of sharing your content.">
-   <meta name="twitter:image" content="{% static 'img/og-img.png' %}">
-
-   <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
-   <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
-    
   
   <title>Tynie - Free URL shortener</title>
+  
+  
+  <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
 
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <link rel="stylesheet" href="{% static 'styles/base.css' %}">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+   <link rel="stylesheet" href="{% static 'shortener/styles/base.css' %}">
 </head>
 
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg bg-body-white nav">
-      <div class="container">
-        <a class="navbar-brand text-bold" href="{% url 'home' %}"><img src="{% static 'img/logo2.png' %}" height="26px" alt=""></a>
-        <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg bg-body-white nav">
+        <a class="navbar-brand text-bold" href="{% url 'home' %}"><img src="{% static 'img/logo2.png' %}" height="26px"
+            alt=""></a>
+        <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
           <ul class="navbar-nav mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link py-1" href="#" >
-                Product
+              <a class="nav-link py-1" href="#">
+                My URLs
               </a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link py-1 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              <a class="nav-link py-1 dropdown-toggle" id="featureLink" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 Features
               </a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu" id="featuresDropDown">
                 <li><a class="dropdown-item text-secondary" href="#">Link-in-bio</a></li>
                 <li><a class="dropdown-item text-dark" href="#">URL Shortener</a></li>
                 <li><a class="dropdown-item text-dark" href="#">Qr Code Generator</a></li>
@@ -63,15 +73,14 @@
             </li>
 
             <div class="d-flex auth-btns">
-                <a class="nav-link text-white me-2 py-1 border border-white rounded log-in"
-                  aria-current="page" href="">Log In</a>
-                <a class="nav-link text-white py-1 border border-dark bg-dark rounded sign-up"
-                   href="">Sign Up</a>
+              <a class="nav-link text-white me-2 py-1 border border-white rounded log-in" aria-current="page"
+                href="">Log In</a>
+              <a class="nav-link text-white py-1 border border-dark bg-dark rounded sign-up" href="">Sign Up</a>
             </div>
           </ul>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
 
 
     <section class="mt-4 main-header pb-0 container">
@@ -82,15 +91,14 @@
           <h3 class="text-left text-white pb-1">Transform long URLs into sleek and shareable links, bidding farewell to
             cumbersome web addresses. Effortlessly condense URLs, maximize impact, and reach your audience faster and
             with style.</h3>
-          <div class="mt-3"> <a href="register" class="btn btn-light">Sign Up</a> <a href="pro-pricing"
-              class="btn text-white bg-dark">Pricing</a> </div>
+          <div class="mt-3"> 
+            <a href="" class="btn btn-light">Sign Up</a>
+            <button href="#ShortenerContainer" id="tryItNow" class="btn text-white bg-dark">Try It Now</button> </div>
         </div>
 
 
-        <div class="col-md-5 text-center">
-          <div class="img-area">
-            <img class="phone" src="{% static 'img/img.png' %}" alt="">
-          </div>
+        <div class="col-md-5 text-end">
+          <img class="phone" src="{% static 'img/img.png' %}" alt="">
         </div>
       </div>
 
@@ -134,18 +142,56 @@
   </header>
 
 
-  <div class="my-5 container shotener-div">   
-    <form action="." method="post">
-        {% csrf_token %}
-        <div class="input-group shadow mb-3">
-          <input type="url" class="form-control border-2 p-3 url-input" placeholder="Enter your URL here" aria-label="URL" aria-describedby="button-addon2">
-          <button class="btn shorten-btn px-4" type="submit" id="button-addon2"><span>Shorten URL</span></button>
-        </div>
+  <section class="my-5 container shotener-div" id="ShortenerContainer">
+      {% csrf_token %}
+      <div class="input-group shadow mb-3">
+        <input type="url" class="form-control border-2 p-3 url-input" id="urlInput" placeholder="Enter your URL here" aria-label="URL"
+          aria-describedby="button-addon2">
+        <button class="btn shorten-btn px-4" type="submit" id="shortenBtn"><span>Shorten URL</span></button>
+      </div>
     </form>
     <p class="text-center" style="text-align: center;"><small>Simplify Sharing with Short URLs</small></p>
-  </div>
+  </section>
 
-  
+  <section class="container features">
+
+    <div class="section-title">
+      <h6>Turn Every Link into a Strategic Advantage</h6>
+      <h2>Reimagine Every Single Click</h2>
+      <p>Enjoy premium link management for free. Turn long URLs into sleek shortcuts offering powerful insights and style—because quality should be accessible.</p>
+    </div>
+
+    <div class="row mt-4">
+
+      <div class="col-md-4 d-flex align-items-stretch mt-4">
+        <div class="icon-box shadow">
+          <div class="icon"><i class="bi bi-link-45deg"></i></div>
+          <h4>Free Link Shortener</h4>
+          <p>Elevate every click with beautifully branded, compact URLs that not only look great but come with robust tracking—completely free. Share smarter and amplify your digital presence with ease.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 d-flex align-items-stretch mt-4">
+        <div class="icon-box shadow">
+          <div class="icon"><i class="bi bi-person-vcard"></i></div>
+          <h4>Intuitive Link-In-Bio Management</h4>
+          <p>Craft your digital hub with a single, customizable landing page. Consolidate all your essential links—from social media to portfolios—and guide your audience exactly where you want them to go, all in one sleek space.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 d-flex align-items-stretch mt-4">
+        <div class="icon-box shadow">
+          <div class="icon"><i class="bi bi-qr-code"></i></div>
+          <h4>Seamless QR Codes</h4>
+          <p>Bridge the gap between offline and online effortlessly. Generate dynamic, scannable QR codes in seconds and drive engagement wherever your audience is—at events, in print, or on the go.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
     crossorigin="anonymous"></script>
@@ -159,6 +205,8 @@
     const tween4 = KUTE.fromTo('#wave1-4', { path: '#wave1-4' }, { path: '#wave2-4' }, { repeat: 999, duration: 3000, yoyo: true }).start();
     const tween5 = KUTE.fromTo('#wave1-5', { path: '#wave1-5' }, { path: '#wave2-5' }, { repeat: 999, duration: 3000, yoyo: true }).start();
   </script>
+  <script src="{% static 'shortener/js/main.js' %}"></script>
+  <script src="{% static 'shortener/js/shortener.js' %}"></script>
 </body>
 
 </html>
