@@ -1,7 +1,55 @@
-.env
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+*.env
+
+# Django specific
 *.log
 *.pot
 *.pyc
-__pycache__
-db.sqlite3
-media
+*.pyo
+*.sqlite3
+/db.sqlite3
+/media/
+/static/
+
+# Local settings
+settings_local.py
+config/settings/local.py
+
+# Secret keys
+*.pem
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Migrations (optional, if you don’t want auto-generated migrations)
+**/migrations/*.py
+!**/migrations/__init__.py
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# macOS system files
+.DS_Store
+
+# Docker files
+*.pid
+docker-compose.override.yml
