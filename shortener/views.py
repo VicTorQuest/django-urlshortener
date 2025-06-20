@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.views import View
@@ -6,6 +7,10 @@ from .forms import SubmitUrl
 from .utils import get_client_ip
 from django.contrib import messages
 from analytics.models import Click
+
+
+support_email = getattr(settings, 'SUPPORT_EMAIL')
+
 
 # Create your views here.
 class home(View):
@@ -48,3 +53,15 @@ class UrlRedirectView(View):
         Click.objects.create(clicked_url=obj, ip_address=ip_address)
         return HttpResponseRedirect(obj.url)
 
+
+# PAGES
+ 
+def contact(request):
+    return render(request, 'shortener/contact.html', {
+        "support_email": support_email
+    })
+
+def faqs(request):
+    return render(request, 'shortener/faqs.html', {
+
+    })

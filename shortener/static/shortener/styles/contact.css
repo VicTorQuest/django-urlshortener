@@ -1,0 +1,58 @@
+.main-header {
+    align-items: start;
+    min-height: 200px;
+}
+
+
+@media screen and (max-width:480px) {
+    .main-header {
+        align-items: start;
+        min-height: auto;
+    }
+}
+
+.nav-pills .nav-link {
+    color: var(--main-color-dark) !important;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: var(--main-color);
+    color: #fff !important;
+}
+
+
+#contactForm {
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 2px solid #eaecf3 !important;
+}
+
+#contactForm input,
+#contactForm textarea{
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#contactForm select:focus-visible  {
+    border: 1px solid var(--border-color);
+    outline: none;
+}
+
+
+#contactForm select:focus {
+    box-shadow: 0 0 0 .25rem var(--shadow-color);
+    border-color: var(--border-color);
+}
+
+
+#contactForm input:focus,
+#contactForm textarea:focus {
+  border-color: var(--main-color);
+  box-shadow: 0 0 0 0.1rem rgba(160, 70, 243, 0.25);
+}
+
+#contactForm button {
+  border-radius: 6px;
+  padding: 10px;
+}

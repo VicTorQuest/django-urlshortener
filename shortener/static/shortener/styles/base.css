@@ -3,6 +3,9 @@
 :root {
     --main-color: rgb(160, 70, 243);
     --main-color-dark: blueviolet;
+    --shadow-color: #f8f5ff;
+    --border-color: rgb(97, 6, 182);
+
 }
 
 body {
@@ -10,6 +13,30 @@ body {
     font-family: 'Fruktur', cursive;
     font-family: 'Josefin Sans', sans-serif;
     font-family: 'Prompt', sans-serif;
+}
+
+
+.btn-brand {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--main-color);
+    --bs-btn-border-color: var(--main-color);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #0b5ed7;
+    --bs-btn-hover-border-color: var(--main-color-dark);
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--main-color-dark);
+    --bs-btn-active-border-color: #0a53be;
+    --bs-btn-active-shadow: inset 0 3px 5px var(--shadow-color);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: var(--main-color);
+    --bs-btn-disabled-border-color: var(--main-color);
+}
+
+.btn-brand:hover {
+    color: var(--bs-btn-hover-color);
+    background-color: var(--main-color-dark);
+    border-color: var(--bs-btn-hover-border-color);
 }
 
 
@@ -81,6 +108,7 @@ header {
 .main-header h2 {
     font-size: 2.9rem !important;
     font-weight: 700;
+    color: #fff;
 }
 
 
@@ -599,11 +627,12 @@ input:focus {
   .qr-section {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #e0c3fc, var(--main-color));
+    background: linear-gradient(135deg, #a64afe, var(--main-color));
     padding-top: 80px;
     padding-bottom: 80px;
     border-radius: 15px;
   }
+  
   
   .qr-section .qr-overlay {
     position: absolute;
