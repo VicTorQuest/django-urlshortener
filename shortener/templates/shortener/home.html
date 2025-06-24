@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <section class="my-5 container shotener-div" id="ShortenerContainer">
-  <form action="" method="post">
+  <form action="" method="post" id="urlShortener">
     {% csrf_token %}
     <div class="input-group shadow mb-3">
       <input type="url" class="form-control border-2 p-3 url-input" id="urlInput" placeholder="Enter your URL here" aria-label="URL"

@@ -1,0 +1,12 @@
+{% extends "shortener/base.html" %}
+{% load static %}
+{% block title %}Cookie Policy - Tynie{% endblock title %}
+ {% block css %}
+ <link rel="stylesheet" href="{% static 'shortener/styles/policy.css' %}">
+ {% endblock css %}
+ {% block main_header %}
+ <div>
+    <h1 class="text-white pt-1">Legal</h1>
+    <h2 class="pt-1">Cookie policy</h2>
+ </div>
+ {% endblock main_header %}

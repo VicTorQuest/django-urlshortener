@@ -65,3 +65,18 @@ def faqs(request):
     return render(request, 'shortener/faqs.html', {
 
     })
+
+def privacy_policy(request):
+    return render(request, 'shorterner/privacy.html', {
+
+    })
+
+def cookie_policy(request):
+    return render(request, 'shorterner/cookie.html', {
+        
+    })
+
+def terms(request):
+    return render(request, 'shorterner/terms.html', {
+        
+    })

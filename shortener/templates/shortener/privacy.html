@@ -1,0 +1,12 @@
+{% extends "shortener/base.html" %}
+{% load static %}
+{% block title %}Privacy Policy Tynie{% endblock title %}
+ {% block css %}
+ <link rel="stylesheet" href="{% static 'shortener/styles/policy.css' %}">
+ {% endblock css %}
+ {% block main_header %}
+ <div>
+    <h1 class="text-white pt-1">Contact us</h1>
+    <h2 class="pt-1">Privacy policy</h2>
+ </div>
+ {% endblock main_header %}
