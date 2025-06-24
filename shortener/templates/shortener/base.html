@@ -27,7 +27,7 @@
 
   
   
-  <title>{% block title %}Tynie - Free URL shortener{% endblock title %}</title>
+  <title>{% block title %}{{site_name}} - Free URL shortener{% endblock title %}</title>
   
   
   
@@ -151,7 +151,7 @@
       <div class="container row mx-auto">
         <div class="col-md-4">
           <h4 class="mb-3"><img src="{% static 'img/logo2.png' %}" class="logo" alt=""></h4>
-          <p>Beyond being a top free custom URL shortener, Tynie offers a comprehensive link management platform with advanced tracking features.</p>
+          <p>Beyond being a top free custom URL shortener, {{site_name}} offers a comprehensive link management platform with advanced tracking features.</p>
         </div>
         <div class="col-md-3">
           <h5>Features</h5>
@@ -165,9 +165,9 @@
         <div class="col-md-3">
           <h5>Legal</h5>
           <ul class="list-unstyled">
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="{% url 'terms' %}">Terms of Service</a></li>
+            <li><a href="{% url 'privacy_policy' %}">Privacy Policy</a></li>
+            <li><a href="{% url 'cookie_policy' %}">Cookie Policy</a></li>
           </ul>
         </div>
         <div class="col-md-2">
@@ -179,7 +179,7 @@
         </div>
       </div>
       <div class="text-center mt-4">
-        <small>&copy; 2025 Tynie. All rights reserved.</small>
+        <small>&copy; 2025 {{site_name}}. All rights reserved.</small>
       </div>
     </footer>
 

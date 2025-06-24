@@ -3,6 +3,27 @@
     min-height: 200px;
 }
 
+.policy-text h5 {
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--main-color-dark);
+}
+
+.policy-text p, .policy-text li {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.7;
+}
+
+.policy-text ul {
+  padding-left: 20px;
+}
+
+.policy-text a {
+    text-decoration: none;
+    color: var(--main-color-dark);
+}
 
 @media screen and (max-width:480px) {
     .main-header {

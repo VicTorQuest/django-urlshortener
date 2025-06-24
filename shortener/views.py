@@ -10,13 +10,17 @@ from analytics.models import Click
 
 
 support_email = getattr(settings, 'SUPPORT_EMAIL')
+site_name = getattr(settings, 'SITE_NAME', 'Tieny')
 
 
 # Create your views here.
 class home(View):
     def get(self, request, *args, **kwargs):
         form = SubmitUrl()
-        return render(request, 'shortener/home.html', {"form": form})
+        return render(request, 'shortener/home.html', {
+            "site_name": site_name,
+            "form": form
+    })
 
     def post(self, request, *args, **kwargs):
         form = SubmitUrl(request.POST or None)
@@ -27,6 +31,7 @@ class home(View):
             obj, created = Link.objects.get_or_create(url=newurl)
             obj.get_total_clicks
             context = {
+                "site_name": site_name,
                 'obj': obj,
                 'created': created
             }
@@ -58,25 +63,29 @@ class UrlRedirectView(View):
  
 def contact(request):
     return render(request, 'shortener/contact.html', {
+        "site_name": site_name,
         "support_email": support_email
     })
 
 def faqs(request):
     return render(request, 'shortener/faqs.html', {
-
+        "site_name": site_name,
     })
 
 def privacy_policy(request):
-    return render(request, 'shorterner/privacy.html', {
-
+    return render(request, 'shortener/privacy.html', {
+        "site_name": site_name,
+        "support_email": support_email
     })
 
 def cookie_policy(request):
-    return render(request, 'shorterner/cookie.html', {
-        
+    return render(request, 'shortener/cookie.html', {
+        "site_name": site_name,
+        "support_email": support_email
     })
 
 def terms(request):
-    return render(request, 'shorterner/terms.html', {
-        
+    return render(request, 'shortener/terms.html', {
+        "site_name": site_name,
+        "support_email": support_email
     })

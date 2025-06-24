@@ -1,6 +1,6 @@
  {% extends "shortener/base.html" %}
  {% load static %}
- {% block title %}Contact Tynie{% endblock title %}
+ {% block title %}Contact {{site_name}}{% endblock title %}
  {% block css %}
  <link rel="stylesheet" href="{% static 'shortener/styles/contact.css' %}">
  {% endblock css %}
@@ -73,8 +73,8 @@
                 <div class="col-lg-8">
                     <form id="contactForm" class="p-4 mt-3 shadow rounded bg-white">
                         <div class="mb-3">
-                        <label for="link" class="form-label">Tynie Link</label>
-                        <input type="url" class="form-control" name="link" id="link" placeholder="Please enter valid tynie link" required>
+                        <label for="link" class="form-label">{{site_name}} Link</label>
+                        <input type="url" class="form-control" name="link" id="link" placeholder="Please enter valid {{site_name}} link" required>
                         </div>
                         <div class="mb-3">
                         <label for="#reason" class="form-label">Reason</label>

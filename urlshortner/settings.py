@@ -161,6 +161,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SHORTCODE_MIN = 6
 SHORTCODE_MAX = 15
 
+SITE_NAME = 'Tynie'
 
 if not DEBUG:
     PARENT_HOST = ALLOWED_HOSTS[0]

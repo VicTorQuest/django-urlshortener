@@ -1,6 +1,6 @@
 {% extends "shortener/base.html" %}
 {% load static %}
-{% block title %}Cookie Policy - Tynie{% endblock title %}
+{% block title %}Cookie Policy - {{site_name}}{% endblock title %}
  {% block css %}
  <link rel="stylesheet" href="{% static 'shortener/styles/policy.css' %}">
  {% endblock css %}
@@ -10,3 +10,45 @@
     <h2 class="pt-1">Cookie policy</h2>
  </div>
  {% endblock main_header %}
+
+ {% block content %}
+ <div class="container my-5">
+    <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <div class="policy-text p-4 shadow-sm bg-white rounded">
+
+        <h5>1. What Are Cookies?</h5>
+        <p>Cookies are small text files stored on your device when you visit a website. They help enhance your experience by remembering your preferences, login sessions, and tracking how you interact with our services.</p>
+
+        <h5>2. How {{site_name}} Uses Cookies</h5>
+        <p>We use cookies to:</p>
+        <ul>
+          <li>Enable core functionality (e.g., keeping you logged in)</li>
+          <li>Analyze site traffic and usage to improve our services</li>
+          <li>Track the performance of shortened URLs</li>
+          <li>Remember your preferences for a more personalized experience</li>
+        </ul>
+
+        <h5>3. Types of Cookies We Use</h5>
+        <ul>
+          <li><strong>Essential Cookies:</strong> Required for basic site functions like authentication and link management.</li>
+          <li><strong>Performance Cookies:</strong> Help us understand how users interact with {{site_name}} (e.g., page views, click analytics).</li>
+          <li><strong>Functional Cookies:</strong> Store your preferences, such as language or interface settings.</li>
+          <li><strong>Third-Party Cookies:</strong> We may allow third parties like analytics providers or ad partners to set cookies for reporting and ad personalization.</li>
+        </ul>
+
+        <h5>4. Managing Cookies</h5>
+        <p>You can choose to accept or decline cookies through your browser settings. Most browsers allow you to control cookies, including deleting them or blocking them entirely.</p>
+        <p>Note that disabling essential cookies may affect the functionality of key features on {{site_name}}.</p>
+
+        <h5>5. Changes to This Policy</h5>
+        <p>We may update this Cookie Policy periodically to reflect changes in our practices or legal obligations. We encourage you to review this policy from time to time.</p>
+
+        <h5>6. Contact Us</h5>
+        <p>If you have questions or concerns about our use of cookies, please contact us at <a href="mailto:{{support_email}}">{{support_email}}</a>.</p>
+
+      </div>
+    </div>
+  </div>
+ </div>
+ {% endblock content %}

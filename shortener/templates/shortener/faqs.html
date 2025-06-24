@@ -1,2 +1,228 @@
 {% extends "shortener/base.html" %}
 {% load static %}
+{% block title %}FAQs - {{site_name}}{% endblock title %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'shortener/styles/faqs.css' %}">
+{% endblock css %}
+{% block main_header %}
+<div>
+    <h1 class="text-white pt-1">FAQs</h1>
+    <h2 class="pt-1">Frequently Asked Questions</h2>
+</div>
+{% endblock main_header %}
+{% block content %}
+<section class="container">
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8 text-center py-5">
+            <h3>Frequently Asked Questions</h3>
+            <p class="">Have questions? We've got answers. Find quick solutions to the most common concerns about
+                using {{site_name}}.</p>
+        </div>
+        <div class="col-lg-12">
+            <div class="row">
+                <!-- Left Column -->
+                <div class="col-md-6">
+                    <div class="accordion faq-accordion" id="faqLeft">
+
+                        <!-- What is {{site_name}}? -->
+                        <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq1">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1"
+                            aria-expanded="true" aria-controls="collapse1">
+                            What is {{site_name}}?
+                            </button>
+                        </h2>
+                        <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="faq1" data-bs-parent="#faqLeft">
+                            <div class="accordion-body">
+                            {{site_name}} is a free and powerful URL shortener that lets you create concise, shareable links with built-in analytics and QR code generation.
+                            </div>
+                        </div>
+                        </div>
+
+                        <!-- What is a URL shortener? -->
+                        <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2"
+                            aria-expanded="false" aria-controls="collapse2">
+                            What is a URL shortener?
+                            </button>
+                        </h2>
+                        <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqLeft">
+                            <div class="accordion-body">
+                            A URL shortener is a tool that converts long web links into shorter, more manageable URLs, making them easier to share and track.
+                            </div>
+                        </div>
+                        </div>
+
+                        <!-- How do URL shorteners work? -->
+                        <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3"
+                            aria-expanded="false" aria-controls="collapse3">
+                            How do URL shorteners work?
+                            </button>
+                        </h2>
+                        <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqLeft">
+                            <div class="accordion-body">
+                            When you shorten a URL, {{site_name}} stores it in a database and creates a new short link that redirects users to the original address when visited.
+                            </div>
+                        </div>
+                        </div>
+
+                        <!-- Do I need an account to shorten links? -->
+                        <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4"
+                            aria-expanded="false" aria-controls="collapse4">
+                            Do I need an account to shorten links?
+                            </button>
+                        </h2>
+                        <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="faq4" data-bs-parent="#faqLeft">
+                            <div class="accordion-body">
+                            No account is required. But if you want to customize, track, or manage your links later, creating an account is recommended.
+                            </div>
+                        </div>
+                        </div>
+
+                        <!-- How long do shortened URLs last? -->
+                        <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq5">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5"
+                            aria-expanded="false" aria-controls="collapse5">
+                            How long do shortened URLs last?
+                            </button>
+                        </h2>
+                        <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="faq5" data-bs-parent="#faqLeft">
+                            <div class="accordion-body">
+                            Shortened links created on {{site_name}} never expire unless deleted by the user or removed due to a terms violation.
+                            </div>
+                        </div>
+                        </div>
+
+                        <!-- Can I delete a short link after creating it? -->
+                        <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq6">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6"
+                            aria-expanded="false" aria-controls="collapse6">
+                            Can I delete a short link after creating it?
+                            </button>
+                        </h2>
+                        <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="faq6" data-bs-parent="#faqLeft">
+                            <div class="accordion-body">
+                            Yes, registered users can delete links from their dashboard at any time.
+                            </div>
+                        </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="col-md-6">
+                    <div class="accordion faq-accordion" id="faqRight">
+                
+                        <!-- Can I track how many people clicked my links? -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq7">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                                    Can I track how many people clicked my links?
+                                </button>
+                            </h2>
+                            <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="faq7" data-bs-parent="#faqRight">
+                                <div class="accordion-body">
+                                    Yes! {{site_name}} gives you real-time analytics including total clicks, referrers, and geolocation
+                                    data.
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!-- How do I generate a QR code? -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq8">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                                    How do I generate a QR code?
+                                </button>
+                            </h2>
+                            <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="faq8" data-bs-parent="#faqRight">
+                                <div class="accordion-body">
+                                    After shortening a link, just click “Generate QR” to instantly download a QR code image.
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!-- Can I customize the short link? -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq9">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
+                                    Can I customize the short link?
+                                </button>
+                            </h2>
+                            <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="faq9" data-bs-parent="#faqRight">
+                                <div class="accordion-body">
+                                    Yes, you can create a custom alias like {{site_name}}/your-name if it's available and you're signed
+                                    in.
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!-- Is {{site_name}} safe to use? -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq10">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse10" aria-expanded="false" aria-controls="collapse10">
+                                    Is {{site_name}} safe to use?
+                                </button>
+                            </h2>
+                            <div id="collapse10" class="accordion-collapse collapse" aria-labelledby="faq10" data-bs-parent="#faqRight">
+                                <div class="accordion-body">
+                                    Absolutely. We monitor links for abuse, use HTTPS throughout the platform, and provide users with
+                                    the ability to delete links.
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!-- Does {{site_name}} support link expiration? -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq11">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse11" aria-expanded="false" aria-controls="collapse11">
+                                    Does {{site_name}} support link expiration?
+                                </button>
+                            </h2>
+                            <div id="collapse11" class="accordion-collapse collapse" aria-labelledby="faq11" data-bs-parent="#faqRight">
+                                <div class="accordion-body">
+                                    At this time, links do not automatically expire. However, we’re exploring custom expiration features
+                                    for future releases.
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!-- Can I embed links in my social media bio? -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq12">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse12" aria-expanded="false" aria-controls="collapse12">
+                                    Can I embed links in my social media bio?
+                                </button>
+                            </h2>
+                            <div id="collapse12" class="accordion-collapse collapse" aria-labelledby="faq12" data-bs-parent="#faqRight">
+                                <div class="accordion-body">
+                                    Definitely! Our short links and “Link in Bio” manager are optimized for Instagram, TikTok, Twitter,
+                                    and more.
+                                </div>
+                            </div>
+                        </div>
+                
+                
+                    </div>
+                </div>
+                </div> <!-- end row -->
+                </div>
+                </div>
+                </section>
+{% endblock content %}
