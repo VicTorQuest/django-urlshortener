@@ -39,6 +39,25 @@ body {
     border-color: var(--bs-btn-hover-border-color);
 }
 
+ .user-urls-list .url-card {
+  transition: box-shadow 0.3s ease;
+  background-color: var(--shadow-color);
+}
+
+ .user-urls-list .url-card .text-truncate {
+  color: var(--main-color-dark);
+  max-width: 350px
+ }
+
+ .user-urls-list .url-card a {
+  text-decoration: none;
+ }
+
+ .user-urls-list .url-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+
 
 header {
     margin: 0;
@@ -69,12 +88,12 @@ header {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-.dropdown-menu a {
+.navbar-nav .dropdown-menu a {
     color: #fff !important
 }
 
 
-.dropdown-menu a:hover, .dropdown-menu a:focus {
+.navbar-nav .dropdown-menu a:hover, .dropdown-menu a:focus {
     background-color: blueviolet;
     color: #fff !important
 }
@@ -756,6 +775,13 @@ input:focus {
 
 
 @media screen  and (max-width:480px) {
+   .user-urls-list .url-card .text-truncate {
+      color: var(--main-color-dark);
+      max-width: 350px;
+      word-break: break-all;
+      width: 100%;
+    }
+
     .main-header h1 {
         font-size: 1rem !important;
     }
