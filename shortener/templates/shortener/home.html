@@ -4,13 +4,60 @@
 <section class="my-5 container shotener-div" id="ShortenerContainer">
   <form action="" method="post" id="urlShortener">
     {% csrf_token %}
-    <div class="input-group shadow mb-3">
+    <div class="input-group shadow">
       <input type="url" class="form-control border-2 p-3 url-input" id="urlInput" placeholder="Enter your URL here" aria-label="URL"
         aria-describedby="button-addon2">
       <button class="btn shorten-btn px-4" type="submit" id="shortenBtn"><span>Shorten URL</span></button>
     </div>
   </form>
-  <p class="text-center" style="text-align: center;"><small>Simplify Sharing with Short URLs</small></p>
+
+  <!-- Result Panel (hidden initially) -->
+  <div id="shortenedResult" class="result-card shadow p-4 bg-white rounded d-none">
+    <div class="text-center mb-4">
+      <p class="mb-1 text-muted small">Original URL:</p>
+      <p class="text-break original-url">https://verylonglink.com/with-some-tracking-code</p>
+    </div>
+
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4 gap-3">
+      <div class="text-center text-md-start">
+        <p class="mb-1 text-muted small">Your shortened URL:</p>
+        <h5 class="mb-0 fw-bold"><a href="https://{{site_name}}/xyz123" target="_blank" class="text-decoration-none text-dark">https://{{site_name}}/xyz123</a></h5>
+      </div>
+
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-outline-dark btn-sm copy-btn" data-link="https://{{site_name}}/xyz123">
+          <i class="bi bi-clipboard me-1"></i> Copy
+        </button>
+        <button class="btn btn-outline-dark btn-sm" title="QR Code">
+          <i class="bi bi-qr-code"></i> QR
+        </button>
+
+        <!-- Share Dropdown -->
+        <div class="dropdown">
+          <button class="btn btn-outline-brand btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-share-fill me-1"></i> Share
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow">
+            <li><a class="dropdown-item" href="#"><i class="bi bi-twitter-x me-2"></i> Twitter/X</a></li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-whatsapp me-2"></i> WhatsApp</a></li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-facebook me-2"></i> Facebook</a></li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-linkedin me-2"></i> Linkedin</a></li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-tiktok me-2"></i> Tiktok</a></li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-envelope-fill me-2"></i> Email</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-wrap justify-content-center text-center gap-3 bottom-result">
+      <a href="#myUrlsModal" data-bs-toggle="modal" class="btn btn-outline-dark btn-sm"><i class="bi bi-link-45deg me-1"></i> My URLs</a>
+      <a href="#" class="btn btn-outline-dark btn-sm"><i class="bi bi-graph-up-arrow me-1"></i> View Insights</a>
+      <button id="shortenAnother" class="btn btn-brand btn-sm"><i class="bi bi-arrow-repeat me-1"></i> Shorten Another</button>
+    </div>
+  </div>
+
+  <p class="text-center mt-3"><small>Simplify Sharing with Short URLs</small></p>
+
 </section>
 
 <section class="container features">
