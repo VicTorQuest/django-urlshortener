@@ -15,17 +15,17 @@
   <div id="shortenedResult" class="result-card shadow p-4 bg-white rounded d-none">
     <div class="text-center mb-4">
       <p class="mb-1 text-muted small">Original URL:</p>
-      <p class="text-break original-url">https://verylonglink.com/with-some-tracking-code</p>
+      <p class="text-break text-truncate original-url" id="originalUrl">https://verylonglink.com/with-some-tracking-code</p>
     </div>
 
     <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4 gap-3">
       <div class="text-center text-md-start">
         <p class="mb-1 text-muted small">Your shortened URL:</p>
-        <h5 class="mb-0 fw-bold"><a href="https://{{site_name}}/xyz123" target="_blank" class="text-decoration-none text-dark">https://{{site_name}}/xyz123</a></h5>
+        <h5 class="mb-0 fw-bold"><a href="https://{{site_name}}/xyz123" target="_blank" class="text-decoration-none text-dark" id="shortenedURL">https://{{site_name}}/xyz123</a></h5>
       </div>
 
       <div class="d-flex align-items-center gap-2">
-        <button class="btn btn-outline-dark btn-sm copy-btn" data-link="https://{{site_name}}/xyz123">
+        <button class="btn btn-outline-dark btn-sm copy-btn" id="copyShortenedURL" data-link="https://{{site_name}}/xyz123">
           <i class="bi bi-clipboard me-1"></i> Copy
         </button>
         <button class="btn btn-outline-dark btn-sm" title="QR Code">
@@ -38,12 +38,11 @@
             <i class="bi bi-share-fill me-1"></i> Share
           </button>
           <ul class="dropdown-menu dropdown-menu-end shadow">
-            <li><a class="dropdown-item" href="#"><i class="bi bi-twitter-x me-2"></i> Twitter/X</a></li>
-            <li><a class="dropdown-item" href="#"><i class="bi bi-whatsapp me-2"></i> WhatsApp</a></li>
-            <li><a class="dropdown-item" href="#"><i class="bi bi-facebook me-2"></i> Facebook</a></li>
-            <li><a class="dropdown-item" href="#"><i class="bi bi-linkedin me-2"></i> Linkedin</a></li>
-            <li><a class="dropdown-item" href="#"><i class="bi bi-tiktok me-2"></i> Tiktok</a></li>
-            <li><a class="dropdown-item" href="#"><i class="bi bi-envelope-fill me-2"></i> Email</a></li>
+            <li><a class="dropdown-item" href="#" target="_blank" id="shareTritter"><i class="bi bi-twitter-x me-2"></i> Twitter/X</a></li>
+            <li><a class="dropdown-item" href="#" target="_blank" id="shareWhatsapp"><i class="bi bi-whatsapp me-2"></i> WhatsApp</a></li>
+            <li><a class="dropdown-item" href="#" target="_blank" id="shareFacebook"><i class="bi bi-facebook me-2"></i> Facebook</a></li>
+            <li><a class="dropdown-item" href="#" target="_blank" id="shareLinkdin"><i class="bi bi-linkedin me-2"></i> Linkedin</a></li>
+            <li><a class="dropdown-item" href="#" target="_blank" id="shareEmail"><i class="bi bi-envelope-fill me-2"></i> Email</a></li>
           </ul>
         </div>
       </div>

@@ -73,7 +73,7 @@ function showAlert(type = 'success', message = 'Action completed') {
     const bgClassMap = {
       success: 'bg-success',
       warning: 'bg-dark',
-      error: 'bg-danger',
+      error: 'bg-dark',
       danger: 'bg-danger', // alias
       info: 'bg-info',
     };
@@ -86,3 +86,11 @@ function showAlert(type = 'success', message = 'Action completed') {
 
     toast.show();
   }
+
+function getCookie(name) {
+  const cookieValue = document.cookie
+    .split('; ')
+    .find(row => row.startsWith(name + '='))
+    ?.split('=')[1];
+  return cookieValue;
+}
