@@ -12,7 +12,6 @@ from .models import Link
 from .utils import get_client_ip, get_or_set_cookie_id
 from .validators import clean_and_validate_url, is_banned, is_own_short_url
 from .serializers import LinkSerializer
-import time
 
 
 support_email = getattr(settings, 'SUPPORT_EMAIL')
@@ -91,7 +90,6 @@ def get_user_links(request):
         qs = Link.objects.filter(cookie_id=cookie_id).order_by('-created_at')
     
     serializer = LinkSerializer(qs, many=True, context={'request': request})
-    time.sleep(2)
     return Response(serializer.data, status=status.HTTP_200_OK)
     
 
