@@ -11,6 +11,8 @@ from analytics.models import Click
 from .models import Link
 from .utils import get_client_ip, get_or_set_cookie_id
 from .validators import clean_and_validate_url, is_banned, is_own_short_url
+from .serializers import LinkSerializer
+import time
 
 
 support_email = getattr(settings, 'SUPPORT_EMAIL')
@@ -66,10 +68,6 @@ def create_short_link(request):
 
     return response
 
-
-
-
-
     
 
 class UrlRedirectView(View):
@@ -78,6 +76,25 @@ class UrlRedirectView(View):
         ip_address = get_client_ip(request)
         Click.objects.create(clicked_url=obj, ip_address=ip_address)
         return HttpResponseRedirect(obj.url)
+    
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_user_links(request):
+    """
+    Return every Link belonging to the logged‑in user,
+    or to the current anonymous visitor.
+    """
+    if request.user.is_authenticated:
+        qs = Link.objects.filter(user=request.user).order_by('-created_at')
+    else:
+        cookie_id = get_or_set_cookie_id(request)
+        qs = Link.objects.filter(cookie_id=cookie_id).order_by('-created_at')
+    
+    serializer = LinkSerializer(qs, many=True, context={'request': request})
+    time.sleep(2)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+    
+
 
 
 

@@ -40,6 +40,7 @@ class Link(models.Model):
     active = models.BooleanField(default=True)
 
     class Meta:
+        ordering = ['-created_at']
         unique_together = [('user', 'url'), ('cookie_id', 'url')] # Enforce uniqueness per user or cookie
 
 

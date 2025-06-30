@@ -15,6 +15,9 @@ body {
     font-family: 'Prompt', sans-serif;
 }
 
+.text-brand {
+  color: var(--main-color-dark) !important;
+}
 
 .btn-brand {
     --bs-btn-color: #fff;
@@ -192,6 +195,11 @@ input:focus {
     background-color: blueviolet !important;
     color: white !important;
 }
+
+.shorten-btn::after {
+  content: 'Shorten URL';
+}
+
 
 .fade-in {
   animation: fadeIn 0.5s ease forwards;
@@ -884,4 +892,8 @@ input:focus {
         font-size: 2.8rem !important;
         font-weight: 700;
     }
+}
+
+ .shorten-btn.loading::after {
+  content: '';            
 }

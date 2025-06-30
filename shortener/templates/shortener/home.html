@@ -7,7 +7,7 @@
     <div class="input-group shadow">
       <input type="url" class="form-control border-2 p-3 url-input" id="urlInput" placeholder="Enter your URL here" aria-label="URL"
         aria-describedby="button-addon2">
-      <button class="btn shorten-btn px-4" type="submit" id="shortenBtn"><span>Shorten URL</span></button>
+      <button class="btn shorten-btn px-4" type="submit" id="shortenBtn"><span></span></button>
     </div>
   </form>
 
@@ -49,7 +49,7 @@
     </div>
 
     <div class="d-flex flex-wrap justify-content-center text-center gap-3 bottom-result">
-      <a href="#myUrlsModal" data-bs-toggle="modal" class="btn btn-outline-dark btn-sm"><i class="bi bi-link-45deg me-1"></i> My URLs</a>
+      <a href="#myUrlsModal" onclick="toggleMyURLs()" class="btn btn-outline-dark btn-sm"><i class="bi bi-link-45deg me-1"></i> My URLs</a>
       <a href="#" class="btn btn-outline-dark btn-sm"><i class="bi bi-graph-up-arrow me-1"></i> View Insights</a>
       <button id="shortenAnother" class="btn btn-brand btn-sm"><i class="bi bi-arrow-repeat me-1"></i> Shorten Another</button>
     </div>

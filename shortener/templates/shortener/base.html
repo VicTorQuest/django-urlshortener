@@ -52,70 +52,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="user-urls-list">
-                    <div class="url-card shadow-sm mb-4 p-3 rounded">
-                        <div class="d-flex justify-content-between flex-wrap">
-                            <div class="mb-2">
-                                <p class="mb-1 small text-muted">Original URL:</p>
-                                <p class="mb-1 text-truncate">https://verylonglink.com/with-details-and-query?params=here</p>
-                                <p class="mb-1 small text-muted">Shortened:</p>
-                                <div class="d-flex align-items-center flex-wrap">
-                                <a href="https://{{site_name}}/abc123"target="_blank" class="text-dark fw-semibold me-2">
-                                    {{site_name}}/abc123
-                                </a>
-                                <button class="btn btn-sm btn-outline-dark me-2 copy-btn" data-link="https://{{site_name}}/abc123" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Copy to clipboard">
-                                    <i class="bi bi-clipboard"></i> 
-                                </button>
-                                <a href="#" class="btn btn-sm btn-outline-dark me-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Customize your {{site_name}} URL">
-                                    <i class="bi bi-pencil-square"></i> 
-                                </a>
-                                 <a href="#" class="btn btn-sm btn-outline-dark me-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Generate QR Code">
-                                    <i class="bi bi-qr-code"></i> 
-                                </a>
-                                </div>
-                            </div>
-
-                            <div class="d-flex align-items-start flex-wrap mt-3 mt-md-0">
-                                  <a href="#" class="btn btn-sm btn-outline-dark me-2" title="View analytics">
-                                <i class="bi bi-graph-up-arrow"></i> Insights
-                                </a>
-                                <div class="dropdown">
-                                    <button class="btn btn-sm btn-outline-brand dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-share-fill me-1"></i> Share
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end shadow">
-                                        <li>
-                                        <a class="dropdown-item" href="https://twitter.com/intent/tweet?url=https://{{site_name}}/abc123" target="_blank">
-                                            <i class="bi bi-twitter-x text-dark me-2"></i> Twitter/X
-                                        </a>
-                                        </li>
-                                        <li>
-                                        <a class="dropdown-item" href="https://wa.me/?text=https://{{site_name}}/abc123" target="_blank">
-                                            <i class="bi bi-whatsapp text-dark me-2"></i> WhatsApp
-                                        </a>
-                                        </li>
-                                        <li>
-                                        <a class="dropdown-item" href="https://www.facebook.com/sharer/sharer.php?u=https://{{site_name}}/abc123" target="_blank">
-                                            <i class="bi bi-facebook text-dark me-2"></i> Facebook
-                                        </a>
-                                        </li>
-                                        <li>
-                                        <a class="dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https://{{site_name}}/abc123" target="_blank">
-                                            <i class="bi bi-linkedin  me-2"></i> LinkedIn
-                                        </a>
-                                        </li>
-                                        <li>
-                                        <a class="dropdown-item" href="mailto:?subject=Check this out&body=https://{{site_name}}/abc123">
-                                            <i class="bi bi-envelope-fill text-dark me-2"></i> Email
-                                        </a>
-                                        </li>
-                                    </ul>
-                                    </div>
-
-                            </div>
-                        </div>
-                    </div>
-
+                <div class="user-urls-list" id="myUrls">
+                 
                     
                 </div>
 
@@ -143,7 +81,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
           <ul class="navbar-nav mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link py-1" id="muUrlsToggle" href="#">
+              <a class="nav-link py-1" id="muUrlsToggle" onclick="toggleMyURLs()" href="#">
                 My URLs
               </a>
             </li>
@@ -307,6 +245,10 @@
     const tween3 = KUTE.fromTo('#wave1-3', { path: '#wave1-3' }, { path: '#wave2-3' }, { repeat: 999, duration: 3000, yoyo: true }).start();
     const tween4 = KUTE.fromTo('#wave1-4', { path: '#wave1-4' }, { path: '#wave2-4' }, { repeat: 999, duration: 3000, yoyo: true }).start();
     const tween5 = KUTE.fromTo('#wave1-5', { path: '#wave1-5' }, { path: '#wave2-5' }, { repeat: 999, duration: 3000, yoyo: true }).start();
+  </script>
+  <script>
+    const site_name = "{{site_name}}"
+    const domain_name = "{{request.get_host}}"
   </script>
   <script src="{% static 'shortener/js/main.js' %}"></script>
   {% block scripts %}{% endblock scripts %}

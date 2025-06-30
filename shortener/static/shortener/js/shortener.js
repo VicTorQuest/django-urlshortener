@@ -48,7 +48,6 @@ async function shortenURL(url) {
 
   } catch (error) {
     console.error('Error:', error.message);
-    console.log(error.message)
     showAlert('error', error.message)
   }
 }
@@ -56,7 +55,6 @@ async function shortenURL(url) {
 
 urlShortener.addEventListener('submit', async (e)=> {
     e.preventDefault()
-    console.log('url submitted')
 
     if (urlInput.value == "" || urlInput.value == null) {
         showAlert('warning', 'Please enter a valid URL.');
@@ -66,13 +64,17 @@ urlShortener.addEventListener('submit', async (e)=> {
     shortenBtn.innerHTML = `<div class="spinner-border text-white" role="status"><span class="visually-hidden">Loading...</span></div>`
     shortenBtn.style.pointerEvents = 'none'
     shortenBtn.style.opacity = "0.8";
+    shortenBtn.classList.add('loading');
+
 
     const response = await shortenURL(urlInput.value)
-    console.log(response)
 
     shortenBtn.innerHTML = `Shorten URL`
     shortenBtn.style.pointerEvents = 'auto'
     shortenBtn.style.opacity = "1";
+    shortenBtn.classList.remove('loading');
+    shortenBtn.innerHTML = '';
+
 
     if (!response) return
 
@@ -111,6 +113,7 @@ urlShortener.addEventListener('submit', async (e)=> {
       resultCard.classList.remove("fade-out");
       resultCard.classList.add("fade-in");
     }, 400);
+
 })
 
 shortenAnotherBtn.addEventListener("click", () => {
