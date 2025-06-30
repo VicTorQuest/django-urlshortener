@@ -32,7 +32,7 @@ DEBUG = str(os.getenv('DEBUG')) == '1'
 
 # ALLOWED_HOSTS = ['tirr.com', 'www.tirr.com', '127.0.0.1']
 if DEBUG:
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['127.0.0.1', 'django-urlshortener-1msg.onrender.com']
 else:
     ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 
