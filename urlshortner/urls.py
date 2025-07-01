@@ -56,5 +56,5 @@ urlpatterns = [
     path('privacy-policy/', privacy_policy, name="privacy_policy"),
     path('terms-of-service/', terms, name="terms"),
 
-    re_path(r'^(?P<shortcode>[a-zA-Z0-9]{6,})/$', UrlRedirectView.as_view(), name='shortened_url')
+    re_path(r'^(?P<short_code>[a-zA-Z0-9]{6,})/$', UrlRedirectView.as_view(), name='shortened_url')
 ]

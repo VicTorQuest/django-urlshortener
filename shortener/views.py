@@ -15,7 +15,8 @@ from .serializers import LinkSerializer
 
 
 support_email = getattr(settings, 'SUPPORT_EMAIL')
-site_name = getattr(settings, 'SITE_NAME', 'Tieny')
+site_name = getattr(settings, 'SITE_NAME', 'Tynee')
+anon_limit = getattr(settings, 'ANON_LIMIT', 5)
 
 
 # API ENDPOINTS
@@ -43,9 +44,7 @@ def create_short_link(request):
     
     # Check if user is authenticated 
     if request.user.is_authenticated:
-        print('get or creating short url')
         obj, created = Link.objects.get_or_create(user=request.user, url=url)
-        print('gotten or created it')
     else:
         cookie_id = get_or_set_cookie_id(request)
         obj, created = Link.objects.get_or_create(cookie_id=cookie_id, url=url)
@@ -56,7 +55,7 @@ def create_short_link(request):
         "link": {
             "id": obj.id,
             "url": obj.url,
-            "shortened_url": f"https://{request.get_host()}/{obj.short_code}",
+            "shortened_url": obj.get_shortened_url(),
         }
     }, status=status.HTTP_201_CREATED  if created else status.HTTP_200_OK)
 
@@ -70,8 +69,8 @@ def create_short_link(request):
     
 
 class UrlRedirectView(View):
-    def get(self, request,  shortcode, *args, **kwargs):
-        obj = get_object_or_404(Link, short_code=shortcode)
+    def get(self, request,  short_code, *args, **kwargs):
+        obj = get_object_or_404(Link, short_code=short_code)
         ip_address = get_client_ip(request)
         Click.objects.create(clicked_url=obj, ip_address=ip_address)
         return HttpResponseRedirect(obj.url)
@@ -79,18 +78,34 @@ class UrlRedirectView(View):
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def get_user_links(request):
-    """
-    Return every Link belonging to the logged‑in user,
-    or to the current anonymous visitor.
+    f"""
+    • Authenticated → return *all* of the user’s links
+    • Anonymous     → return first {anon_limit} links + meta data
     """
     if request.user.is_authenticated:
         qs = Link.objects.filter(user=request.user).order_by('-created_at')
+        limited = False
     else:
         cookie_id = get_or_set_cookie_id(request)
         qs = Link.objects.filter(cookie_id=cookie_id).order_by('-created_at')
+        limited = True
+
+    total_links = qs.count()
+
+    # Slice for anonymous users
+    if limited:
+        qs = qs[:anon_limit]
     
-    serializer = LinkSerializer(qs, many=True, context={'request': request})
-    return Response(serializer.data, status=status.HTTP_200_OK)
+    serializer = LinkSerializer(qs, many=True)
+    return Response(
+        {
+            "links": serializer.data,
+            "total_links": total_links,
+            "showing": len(serializer.data),
+            "limited": limited and total_links > anon_limit
+        }, 
+        status=status.HTTP_200_OK
+    )
     
 
 

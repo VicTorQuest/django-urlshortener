@@ -62,7 +62,7 @@ class Link(models.Model):
         return len(total_clicks)
     
     def get_shortened_url(self):
-        return reverse('shortened_url', kwargs={'short_code': self.short_code}, scheme='http')
+        return reverse('shortened_url', kwargs={'short_code': self.short_code}, scheme='http').rstrip('/')
 
 
 

@@ -86,24 +86,22 @@ urlShortener.addEventListener('submit', async (e)=> {
     // updating share links
 
      // Twitter / X
-    document.getElementById('shareTritter').href =
-      `https://twitter.com/intent/tweet?url=${response.link.shortened_url}`;
+    document.getElementById('shareTritter').href = `https://twitter.com/intent/tweet?url=${response.link.shortened_url}`;
 
     // WhatsApp
-    document.getElementById('shareWhatsapp').href =
-      `https://wa.me/?text=${response.link.shortened_url}`;
+    document.getElementById('shareWhatsapp').href = `https://wa.me/?text=${response.link.shortened_url}`;
 
     // Facebook
-    document.getElementById('shareFacebook').href =
-      `https://www.facebook.com/sharer/sharer.php?u=${response.link.shortened_url}`;
+    document.getElementById('shareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${response.link.shortened_url}`;
 
     // LinkedIn
-    document.getElementById('shareLinkdin').href =
-      `https://www.linkedin.com/sharing/share-offsite/?url=${response.link.shortened_url}`;
+    document.getElementById('shareLinkdin').href = `https://www.linkedin.com/sharing/share-offsite/?url=${response.link.shortened_url}`;
+
+    // Threads
+    document.getElementById('shareThreads').href = `https://www.threads.com/intent/post?text=${response.link.shortened_url}`;
 
     // Email
-    document.getElementById('shareEmail').href =
-      `mailto:?subject=Check this out&body=${response.link.shortened_url}`;
+    document.getElementById('shareEmail').href = `mailto:?subject=Check this out&body=${response.link.shortened_url}`;
 
 
     urlShortener.classList.add("fade-out");

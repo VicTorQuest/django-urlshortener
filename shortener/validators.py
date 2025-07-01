@@ -36,7 +36,7 @@ def clean_and_validate_url(raw_url):
 
 BANNED_DOMAINS = {
     'bit.ly', 'tinyurl.com', 't.co', 'goo.gl', 'rebrand.ly', 'is.gd',
-    'cutt.ly', 'shorturl.at', 'ow.ly', 'shorte.st', 'buff.ly', 'rb.gy'
+    'cutt.ly', 'shorturl.at',' shortenworld.com', 'ow.ly', 'shorte.st', 'buff.ly', 'rb.gy'
 }
 
 

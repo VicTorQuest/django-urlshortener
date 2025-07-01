@@ -169,8 +169,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SHORT_CODE_MIN = 6
 SHORT_CODE_MAX = 15
+ANON_LIMIT = 5             # how many links an anonymous user may see
 
-SITE_NAME = 'Tynie'
+SITE_NAME = 'Tynee'
 
 if not DEBUG:
     PARENT_HOST = ALLOWED_HOSTS[0]

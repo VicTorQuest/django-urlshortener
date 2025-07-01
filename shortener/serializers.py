@@ -17,15 +17,8 @@ class LinkSerializer(serializers.ModelSerializer):
         return None
 
     def get_shortened_url(self, obj):
-        print('getting')
-        request = self.context.get('request')
-        print(request)
-        if not request:
-            return None
-        domain_name = request.get_host()
-        print(domain_name)
-        print(obj.short_code)
         if hasattr(obj, 'short_code'):
-            return f"https://{domain_name}/{obj.short_code}"
+            print(obj.get_shortened_url())
+            return obj.get_shortened_url()
         return None
         

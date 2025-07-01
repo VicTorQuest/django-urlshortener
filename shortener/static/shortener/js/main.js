@@ -3,6 +3,9 @@ const featuresDropDown = document.getElementById("featuresDropDown");
 const muUrlsToggle = document.getElementById("muUrlsToggle");
 const myUrlsModal = new bootstrap.Modal(document.getElementById("myUrlsModal"));
 const myUrls = document.getElementById('myUrls')
+const myURLsInfo = document.getElementById('myURLsInfo')
+const myURLsFooter = document.getElementById('myURLsFooter')
+const viewStatsBtn = document.getElementById('viewStatsBtn')
 
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
@@ -81,18 +84,28 @@ async function getMyURLs() {
 async function toggleMyURLs()  {
   myUrlsModal.show();
 
-  myUrls.innerHTML = ""
+  myURLsFooter.classList.add('d-none')
+  viewStatsBtn.classList.add('d-none')
   myUrls.innerHTML = `<div class="text-center"><div class="spinner-border text-brand" role="status"><span class="visually-hidden">Loading...</span></div></div>`
-
+  myURLsInfo.innerText = ""
 
   const response = await getMyURLs()
-  if (!response) return;
-
+  console.log(response)
   myUrls.innerHTML = ""
+
+  if (!response) {
+    myURLsInfo.innerText = "Unable to load your recent URLs right now."
+    return;
+  } 
+
+  if (response.total_links === 0) {
+      myURLsInfo.innerText = "Your recent URL history is empty."
+      return;
+    }
   
   
 
-  response.forEach(my_url => {
+  response.links.forEach(my_url => {
     let urlCard = `
       <div class="url-card shadow-sm mb-4 p-3 rounded">
         <div class="d-flex justify-content-between flex-wrap">
@@ -146,6 +159,11 @@ async function toggleMyURLs()  {
                         </a>
                         </li>
                         <li>
+                        <a class="dropdown-item" href="https://www.threads.com/intent/post?text=${my_url.shortened_url}" target="_blank">
+                            <i class="bi bi-threads  me-2"></i> Threads
+                        </a>
+                        </li>
+                        <li>
                         <a class="dropdown-item" href="mailto:?subject=Check this out&body=${my_url.shortened_url}">
                             <i class="bi bi-envelope-fill text-dark me-2"></i> Email
                         </a>
@@ -158,9 +176,18 @@ async function toggleMyURLs()  {
     </div>
     `
     myUrls.insertAdjacentHTML('beforeend', urlCard)
+    
   });
-
   enableTooltips(myUrls);
+  
+  if (response.total_links > 5 && response.limited) {
+    myURLsInfo.innerHTML = `Only ${response.showing} of your ${response.total_links} recent URLs are visible. <a class="text-decoration-none text-brand" href="">Register</a> now to unlock full access.`
+  } else {
+    myURLsInfo.innerText = "That’s all for your recent URL activity."
+  }
+  
+  myURLsFooter.classList.remove('d-none')
+  viewStatsBtn.classList.remove('d-none')
     
 };
 
