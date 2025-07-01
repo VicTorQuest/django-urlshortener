@@ -18,7 +18,6 @@ class LinkSerializer(serializers.ModelSerializer):
 
     def get_shortened_url(self, obj):
         if hasattr(obj, 'short_code'):
-            print(obj.get_shortened_url())
             return obj.get_shortened_url()
         return None
         

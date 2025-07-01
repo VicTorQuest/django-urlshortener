@@ -61,10 +61,31 @@
             </div>
             <div class="modal-footer d-none" id="myURLsFooter">
                 <!-- <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button> -->
-                <button type="button" class="btn btn-brand">Clear history</button>
+                <button type="button" class="btn btn-brand" data-bs-target="#clearHistoryModal" data-bs-toggle="modal">Clear history</button>
             </div>
             </div>
         </div>
+    </div>
+
+    <!-- Clear history modal -->
+     <div class="modal fade" id="clearHistoryModal" aria-hidden="true" aria-labelledby="clearHistoryModalLabel" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="clearHistoryModalLabel">Clear recent URLs</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p class="mb-4">Deleting your URLs will remove them from your account permanently. They can’t be edited or recovered afterward.</p>
+            <small>Once you clear your recent URLs, they’re gone for good.</small>
+          </div>
+          <form class="modal-footer">
+            {% csrf_token %}
+            <button class="btn btn-outline-brand" data-bs-target="#myUrlsModal" data-bs-toggle="modal" onclick="toggleMyURLs()">Back to URLs</button>
+            <button class="btn btn-dark" id="clearHistoryBtn">Clear History</button>
+          </form>
+        </div>
+      </div>
     </div>
 
 

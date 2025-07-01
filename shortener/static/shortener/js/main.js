@@ -6,9 +6,58 @@ const myUrls = document.getElementById('myUrls')
 const myURLsInfo = document.getElementById('myURLsInfo')
 const myURLsFooter = document.getElementById('myURLsFooter')
 const viewStatsBtn = document.getElementById('viewStatsBtn')
+const clearHistoryBtn = document.getElementById('clearHistoryBtn')
 
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const consentBanner = document.getElementById("cookieConsent");
+    const acceptBtn = document.getElementById("acceptCookies");
+
+    if (!localStorage.getItem("shortenerCookieAccepted")) {
+      consentBanner.classList.remove("d-none");
+    }
+
+    acceptBtn.addEventListener("click", function () {
+      localStorage.setItem("shortenerCookieAccepted", "true");
+      consentBanner.classList.add("d-none");
+    });
+  });
+
+function showAlert(type = 'success', message = 'Action completed') {
+    const toastEl = document.getElementById('globalToast');
+    const toastBody = document.getElementById('globalToastBody');
+
+    const toast = bootstrap.Toast.getOrCreateInstance(toastEl);
+
+    // background color class based on type
+    const bgClassMap = {
+      success: 'bg-success',
+      warning: 'bg-dark',
+      error: 'bg-dark',
+      danger: 'bg-danger', // alias
+      info: 'bg-info',
+    };
+
+    // Reset previous classes and content
+    toastEl.className = 'toast align-items-center text-white border-0';
+    toastEl.classList.add(bgClassMap[type] || 'bg-success');
+
+    toastBody.innerText = message;
+
+    toast.show();
+  }
+
+function getCookie(name) {
+  const cookieValue = document.cookie
+    .split('; ')
+    .find(row => row.startsWith(name + '='))
+    ?.split('=')[1];
+  return cookieValue;
+}
+
 
 function enableTooltips(root) {
   root.querySelectorAll('[data-bs-toggle="tooltip"]')
@@ -49,9 +98,6 @@ function hideFeatureDropDown() {
   }
 }
 
-
-
-
 enableFeaturHover();
 window.addEventListener("resize", enableFeaturHover);
 
@@ -90,7 +136,6 @@ async function toggleMyURLs()  {
   myURLsInfo.innerText = ""
 
   const response = await getMyURLs()
-  console.log(response)
   myUrls.innerHTML = ""
 
   if (!response) {
@@ -191,49 +236,20 @@ async function toggleMyURLs()  {
     
 };
 
+clearHistoryBtn.addEventListener('click', async ()=> {
+  clearHistoryBtn.disabled = true
+  clearHistoryBtn.innerHTML = `<span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+  <span role="status">Clearing...</span>`
 
-document.addEventListener("DOMContentLoaded", function () {
-    const consentBanner = document.getElementById("cookieConsent");
-    const acceptBtn = document.getElementById("acceptCookies");
+  try {
+    response = await fetch("", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCookie('csrftoken')
+      }
+    })
+  } catch (error) {
 
-    if (!localStorage.getItem("shortenerCookieAccepted")) {
-      consentBanner.classList.remove("d-none");
-    }
-
-    acceptBtn.addEventListener("click", function () {
-      localStorage.setItem("shortenerCookieAccepted", "true");
-      consentBanner.classList.add("d-none");
-    });
-  });
-
-function showAlert(type = 'success', message = 'Action completed') {
-    const toastEl = document.getElementById('globalToast');
-    const toastBody = document.getElementById('globalToastBody');
-
-    const toast = bootstrap.Toast.getOrCreateInstance(toastEl);
-
-    // background color class based on type
-    const bgClassMap = {
-      success: 'bg-success',
-      warning: 'bg-dark',
-      error: 'bg-dark',
-      danger: 'bg-danger', // alias
-      info: 'bg-info',
-    };
-
-    // Reset previous classes and content
-    toastEl.className = 'toast align-items-center text-white border-0';
-    toastEl.classList.add(bgClassMap[type] || 'bg-success');
-
-    toastBody.innerText = message;
-
-    toast.show();
   }
-
-function getCookie(name) {
-  const cookieValue = document.cookie
-    .split('; ')
-    .find(row => row.startsWith(name + '='))
-    ?.split('=')[1];
-  return cookieValue;
-}
+})
