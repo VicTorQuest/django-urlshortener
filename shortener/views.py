@@ -107,8 +107,26 @@ def get_user_links(request):
         status=status.HTTP_200_OK
     )
     
+@api_view(["DELETE"])
+@permission_classes([AllowAny])
+def clear_user_url_history(request):
+    """
+    • Logged‑in user  → delete their links
+    • Anonymous user → delete links bound to their anon_id cookie
+    Returns how many rows were removed.
+    """
 
-
+    if request.user.is_authenticated:
+        qs = Link.objects.filter(user=request.user)
+    else:
+        cookie_id = request.COOKIES.get('anon_id')
+        if not cookie_id:   # visitor never shortened anything
+            return Response({"deleted": 0}, status=status.HTTP_200_OK)
+        qs = Link.objects.filter(cookie_id=cookie_id)
+    
+    deleted, _ = qs.delete()
+    
+    return Response({'deleted': deleted}, status=status.HTTP_200_OK)
 
 
 # PAGES

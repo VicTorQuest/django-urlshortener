@@ -79,11 +79,10 @@
             <p class="mb-4">Deleting your URLs will remove them from your account permanently. They can’t be edited or recovered afterward.</p>
             <small>Once you clear your recent URLs, they’re gone for good.</small>
           </div>
-          <form class="modal-footer">
-            {% csrf_token %}
-            <button class="btn btn-outline-brand" data-bs-target="#myUrlsModal" data-bs-toggle="modal" onclick="toggleMyURLs()">Back to URLs</button>
-            <button class="btn btn-dark" id="clearHistoryBtn">Clear History</button>
-          </form>
+          <div class="modal-footer">
+            <a class="btn btn-outline-brand" href="#myUrlsModal" data-bs-toggle="modal" onclick="toggleMyURLs()">Back to URLs</a>
+            <button class="btn btn-dark" type="submit" id="clearHistoryBtn">Clear History</button>
+          </div>
         </div>
       </div>
     </div>
@@ -100,6 +99,9 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+          <a class="btn btn-light rounded-circle help-lg" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="FAQs" href="{% url 'faqs' %}">
+            <i class="bi bi-question-lg"></i>
+          </a>
           <ul class="navbar-nav mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link py-1" id="muUrlsToggle" onclick="toggleMyURLs()" href="#">
@@ -116,6 +118,11 @@
                 <li><a class="dropdown-item text-dark" href="#">URL Shortener</a></li>
                 <li><a class="dropdown-item text-dark" href="#">Qr Code Generator</a></li>
               </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link py-1 help-sm" href="{% url 'faqs' %}">
+                FAQs
+              </a>
             </li>
 
             <div class="d-flex auth-btns">
@@ -135,9 +142,7 @@
           <div class="col-md-7 my-auto mx-auto">
             <h1 class="text-white pt-1">Free URL Shortener</h1>
             <h2 class="pt-1">Elevate Engagement<br> with Concise Links!</h2>
-            <h3 class="text-left text-white pb-1">Transform long URLs into sleek and shareable links, bidding farewell to
-              cumbersome web addresses. Effortlessly condense URLs, maximize impact, and reach your audience faster and
-              with style.</h3>
+            <h3 class="text-left text-white pb-1">Transform long URLs into sleek, shareable links. Say goodbye to cumbersome addresses. Condense URLs, maximize impact, and effortlessly reach your audience with speed and style.</h3>
             <div class="mt-3"> 
               <a href="" class="btn btn-light">Sign Up</a>
               <button href="#ShortenerContainer" id="tryItNow" class="btn text-white bg-dark">Try It Now</button> </div>

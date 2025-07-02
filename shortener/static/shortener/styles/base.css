@@ -100,6 +100,26 @@ header {
     height: 26px;
 }
 
+.help-lg {
+  /* padding: 2px 6px; */
+  color: var(--main-color-dark);
+  margin-right: 1rem;
+  content: "\f64e";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+}
+
+.help-lg i {
+  display: flex;
+}
+
+.help-sm {
+  display: none;
+}
+
 .navbar-expand-lg {
     padding: 15px 0;
 }
@@ -803,6 +823,14 @@ input:focus {
 
 
 @media screen and (max-width: 991px) {
+    .help-lg {
+      display: none;
+    }
+
+    .help-sm {
+      display: block;
+    }
+
     .navbar-nav .log-in, .navbar-nav .sign-up {
         padding: 0 10px;
     }

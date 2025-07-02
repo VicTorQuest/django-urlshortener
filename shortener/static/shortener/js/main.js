@@ -2,6 +2,7 @@ const featuresLink = document.getElementById("featureLink");
 const featuresDropDown = document.getElementById("featuresDropDown");
 const muUrlsToggle = document.getElementById("muUrlsToggle");
 const myUrlsModal = new bootstrap.Modal(document.getElementById("myUrlsModal"));
+const clearHistoryModal = new bootstrap.Modal(document.getElementById("clearHistoryModal"));
 const myUrls = document.getElementById('myUrls')
 const myURLsInfo = document.getElementById('myURLsInfo')
 const myURLsFooter = document.getElementById('myURLsFooter')
@@ -242,14 +243,30 @@ clearHistoryBtn.addEventListener('click', async ()=> {
   <span role="status">Clearing...</span>`
 
   try {
-    response = await fetch("", {
-      method: "POST",
+    response = await fetch("/api/v1/my-links/clear/", {
+      method: "DELETE",
       headers: {
         'Content-Type': 'application/json',
         'X-CSRFToken': getCookie('csrftoken')
       }
     })
-  } catch (error) {
 
+    if (!response.ok) throw new Error('HTTP ' + response.status)
+
+    const { deleted } = await response.json();
+
+    if (deleted > 0) {
+      showAlert('success', 'URL history cleared.');
+    } else {
+      showAlert('info',    'No links to delete.');
+    }
+  } catch (error) {
+    console.error('Error:', error.message);
+    showAlert('error', 'Could not clear history.')
+  } finally {
+    clearHistoryBtn.disabled = false;
+    clearHistoryBtn.innerHTML = `Clear History`;
+    clearHistoryModal.hide();
+    toggleMyURLs();
   }
 })
