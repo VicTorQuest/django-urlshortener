@@ -163,3 +163,15 @@ def terms(request):
         "site_name": site_name,
         "support_email": support_email
     })
+
+def sign_in_page(request):
+    return render(request, 'shortener/sign_in.html', {
+        "site_name": site_name,
+        "support_email": support_email
+    })
+
+def sign_up_page(request):
+    return render(request, 'shortener/sign_up.html', {
+        "site_name": site_name,
+        "support_email": support_email
+    })

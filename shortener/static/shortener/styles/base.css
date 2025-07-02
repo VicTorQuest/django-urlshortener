@@ -5,7 +5,6 @@
     --main-color-dark: blueviolet;
     --shadow-color: #f8f5ff;
     --border-color: rgb(97, 6, 182);
-
 }
 
 body {
@@ -101,15 +100,13 @@ header {
 }
 
 .help-lg {
-  /* padding: 2px 6px; */
-  color: var(--main-color-dark);
   margin-right: 1rem;
   content: "\f64e";
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
 }
 
 .help-lg i {
@@ -572,17 +569,6 @@ input:focus {
   to { transform: rotate(360deg); }
 }
 
-@media (max-width: 768px) {
-  .analytics-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .card-icon {
-    width: 80px;
-    height: 80px;
-  }
-}
-
 /* Enhanced Analytics Visualization */
 .engagement-visual {
   width: 100px;
@@ -711,21 +697,6 @@ input:focus {
     100% { transform: translateY(0); }
   }
   
-  @media (max-width: 768px) {
-    .bio-section .bio-content {
-      text-align: center;
-      margin-top: 2rem;
-    }
-    
-    .bio-section .bio-features li {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-      margin-right: 0;
-    }
-  }
-
-  
   /* QR Code Generator Section with Overlapping Elements */
   .qr-section {
     position: relative;
@@ -851,11 +822,17 @@ input:focus {
 
 
 @media screen and (max-width: 767px) {
-    
     .main-header {
         margin-top: 2.2rem !important;
     }
 
+    .phone-area {
+      text-align: center !important;
+    }
+
+    .phone {
+        margin-top: 2.5rem;
+    }
 
     .section-title h6 {
         font-size: 0.8rem;
@@ -872,6 +849,26 @@ input:focus {
         font-size: 14px;
     }
 
+    .bio-section .bio-content {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    
+    .bio-section .bio-features li {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-right: 0;
+    }
+
+    .analytics-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .card-icon {
+      width: 80px;
+      height: 80px;
+    }
 }
 
 

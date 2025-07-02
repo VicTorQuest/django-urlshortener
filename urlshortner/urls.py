@@ -24,30 +24,15 @@ from shortener.views import (
     cookie_policy,
     privacy_policy,
     terms,
+    sign_in_page,
+    sign_up_page,
     UrlRedirectView
 )
-
-
-# Serializers define the API representation.
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ['url', 'username', 'email', 'is_staff']
-
-# ViewSets define the view behavior.
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-# Routers provide an easy way of automatically determining the URL conf.
-router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/v1/', include("shortener.urls")),
-    # path('rest-framwork/', include(router.urls)),
 
     path('', home, name='home'),
     path('contact/', contact, name="contact"),
@@ -55,6 +40,8 @@ urlpatterns = [
     path('cookie-policy/', cookie_policy, name="cookie_policy"),
     path('privacy-policy/', privacy_policy, name="privacy_policy"),
     path('terms-of-service/', terms, name="terms"),
+    path('sign-in/', sign_in_page, name="sign_in_page"),
+    path('sign-up/', sign_up_page, name="sign_up_page"),
 
     re_path(r'^(?P<short_code>[a-zA-Z0-9]{6,})/$', UrlRedirectView.as_view(), name='shortened_url')
 ]

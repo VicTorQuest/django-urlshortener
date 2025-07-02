@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - {{site_name}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static "shortener/styles/auth.css" %}">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="container-fluid h-100">
+            <div class="row h-100">
+                <!-- Left Side - Branding -->
+                <div class="col-lg-6 d-none d-lg-flex auth-brand-side">
+                    <div class="brand-content">
+                        <div class="brand-logo">
+                            <i class="fas fa-rocket fa-3x mb-4"></i>
+                            <h1 class="brand-title">{{site_name}}</h1>
+                            <p class="brand-subtitle">Welcome back! Sign in to continue</p>
+                        </div>
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Secure Login</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-bolt"></i>
+                                <span>Fast Access</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-heart"></i>
+                                <span>Trusted Platform</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side - Form -->
+                <div class="col-lg-6 col-12 auth-form-side">
+                    <div class="auth-form-container">
+                        <div class="auth-header text-center mb-4">
+                            <h2 class="auth-title">Welcome Back</h2>
+                            <p class="auth-subtitle">Sign in to your account</p>
+                        </div>
+
+                        <!-- Social Login Buttons -->
+                        <div class="social-login mb-4">
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <button type="button" class="btn social-btn w-100">
+                                        <i class="fab fa-google"></i>
+                                        <span class="d-none d-sm-inline">Google</span>
+                                    </button>
+                                </div>
+                                <div class="col-6">
+                                    <button type="button" class="btn social-btn w-100">
+                                        <i class="fab fa-facebook-f"></i>
+                                        <span class="d-none d-sm-inline">Facebook</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row g-2 mt-2">
+                                <div class="col-6">
+                                    <button type="button" class="btn social-btn w-100">
+                                        <i class="fab fa-x-twitter"></i>
+                                        <span class="d-none d-sm-inline">Twitter</span>
+                                    </button>
+                                </div>
+                                <div class="col-6">
+                                    <button type="button" class="btn social-btn w-100">
+                                        <i class="fab fa-apple"></i>
+                                        <span class="d-none d-sm-inline">Apple</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="divider">
+                            <span>or</span>
+                        </div>
+
+                        <!-- Sign In Form -->
+                        <form id="signinForm" class="auth-form" novalidate>
+                            <div class="mb-3">
+                                <label for="loginField" class="form-label">Username or Email</label>
+                                <div class="input-group">
+                                    <span class="input-icon">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                    <input type="text" class="form-control" id="loginField" name="loginField" required>
+                                </div>
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="signinPassword" class="form-label">Password</label>
+                                <div class="input-group password-group">
+                                    <span class="input-icon">
+                                        <i class="fas fa-lock"></i>
+                                    </span>
+                                    <input type="password" class="form-control" id="signinPassword" name="password" required>
+                                    <button type="button" class="password-toggle" data-target="signinPassword">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="mb-4 d-flex justify-content-between align-items-center">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe">
+                                    <label class="form-check-label" for="rememberMe">
+                                        Remember me
+                                    </label>
+                                </div>
+                                <a href="#" class="forgot-link">Forgot password?</a>
+                            </div>
+
+                            <button type="submit" class="btn auth-btn w-100 mb-3">
+                                <span class="btn-text">Sign In</span>
+                                <div class="btn-loader d-none">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </div>
+                            </button>
+
+                            <div class="text-center">
+                                <span class="switch-text">Don't have an account? </span>
+                                <a href="signup.html" class="switch-link">Sign Up</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static "shortener/js/auth.js" %}"></script>
+</body>
+</html>

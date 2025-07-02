@@ -227,7 +227,7 @@ async function toggleMyURLs()  {
   enableTooltips(myUrls);
   
   if (response.total_links > 5 && response.limited) {
-    myURLsInfo.innerHTML = `Only ${response.showing} of your ${response.total_links} recent URLs are visible. <a class="text-decoration-none text-brand" href="">Register</a> now to unlock full access.`
+    myURLsInfo.innerHTML = `Only ${response.showing} of your ${response.total_links} recent URLs are visible. <a class="text-decoration-none text-brand" href="">Sign up</a> now to unlock full access.`
   } else {
     myURLsInfo.innerText = "That’s all for your recent URL activity."
   }
