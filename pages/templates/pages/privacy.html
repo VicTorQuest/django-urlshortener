@@ -1,0 +1,76 @@
+{% extends "pages/base.html" %}
+{% load static %}
+{% block title %}Privacy Policy - {{site_name}}{% endblock title %}
+ {% block css %}
+ <link rel="stylesheet" href="{% static 'pages/styles/policy.css' %}">
+ {% endblock css %}
+ {% block main_header %}
+ <div>
+    <h1 class="text-white pt-1">Legal</h1>
+    <h2 class="pt-1">Privacy policy</h2>
+ </div>
+ {% endblock main_header %}
+
+ {% block content %}
+ <div class="container">
+      <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <div class="policy-text p-4 shadow-sm bg-white rounded">
+
+        <h5>1. Information We Collect</h5>
+        <p>When you use {{site_name}}, we may collect the following types of information:</p>
+        <ul>
+          <li><strong>Account Information:</strong> When you sign up, we collect your name, email address, and password.</li>
+          <li><strong>URL Data:</strong> We track the original and shortened URLs you create, including analytics like click counts and IP-based location data.</li>
+          <li><strong>Usage Data:</strong> Information such as your browser type, device, IP address, and interaction with the platform.</li>
+          <li><strong>Cookies:</strong> We use cookies to remember preferences and measure performance. See our <a href="#cookie-policy">Cookie Policy</a> for more details.</li>
+        </ul>
+
+        <h5>2. How We Use Your Information</h5>
+        <p>Your data helps us improve and personalize your experience. We use it to:</p>
+        <ul>
+          <li>Operate and maintain {{site_name}}</li>
+          <li>Provide analytics and reports for the links you create</li>
+          <li>Respond to user support inquiries</li>
+          <li>Send service updates or important notifications</li>
+        </ul>
+
+        <h5>3. Sharing of Information</h5>
+        <p>We do not sell your personal data. We may share it only with:</p>
+        <ul>
+          <li><strong>Service providers</strong> (e.g., hosting, analytics, email)</li>
+          <li><strong>Law enforcement</strong> if legally required</li>
+          <li><strong>Third-party analytics tools</strong> (only anonymized data)</li>
+        </ul>
+
+        <h5>4. Data Retention</h5>
+        <p>We retain your information for as long as needed to fulfill the purposes outlined in this policy, unless a longer retention period is required or permitted by law.</p>
+
+        <h5>5. Your Rights</h5>
+        <p>You have the right to:</p>
+        <ul>
+          <li>Access, correct, or delete your data</li>
+          <li>Withdraw consent (e.g., unsubscribe from emails)</li>
+          <li>Request a copy of your personal data</li>
+        </ul>
+        <p>You can make these requests by contacting us at <a href="mailto:privacy@{{site_name}}.com">privacy@{{site_name}}.com</a>.</p>
+
+        <h5>6. Data Security</h5>
+        <p>We use industry-standard security measures (e.g., HTTPS, encryption) to protect your data. However, no method of transmission is 100% secure, and we cannot guarantee absolute security.</p>
+
+        <h5>7. Children's Privacy</h5>
+        <p>{{site_name}} is not intended for users under 13. We do not knowingly collect personal data from children.</p>
+
+        <h5>8. Changes to This Policy</h5>
+        <p>We may update this policy to reflect changes in laws or our practices. The “Last Updated” date will be revised at the bottom of this policy.</p>
+
+        <h5>9. Contact Us</h5>
+        <p>If you have questions or concerns about this Privacy Policy, please email us at <a href="mailto:{{support_email}}">{{support_email}}</a>.</p>
+
+        <p class="mt-4 text-muted"><small>Last Updated: June 2025</small></p>
+      </div>
+    </div>
+  </div>
+
+ </div>
+ {% endblock content %}

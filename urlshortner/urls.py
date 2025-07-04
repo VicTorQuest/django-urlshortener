@@ -15,33 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
-from django.contrib.auth.models import User
-from rest_framework import routers, serializers, viewsets
 from shortener.views import (
-    home,
-    contact,
-    faqs,
-    cookie_policy,
-    privacy_policy,
-    terms,
-    sign_in_page,
-    sign_up_page,
     UrlRedirectView
 )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('accounts/', include("accounts.urls")),
     path('api/v1/', include("shortener.urls")),
 
-    path('', home, name='home'),
-    path('contact/', contact, name="contact"),
-    path('faqs/', faqs, name="faqs"),
-    path('cookie-policy/', cookie_policy, name="cookie_policy"),
-    path('privacy-policy/', privacy_policy, name="privacy_policy"),
-    path('terms-of-service/', terms, name="terms"),
-    path('sign-in/', sign_in_page, name="sign_in_page"),
-    path('sign-up/', sign_up_page, name="sign_up_page"),
+    path('', include("pages.urls")),
 
     re_path(r'^(?P<short_code>[a-zA-Z0-9]{6,})/$', UrlRedirectView.as_view(), name='shortened_url')
 ]

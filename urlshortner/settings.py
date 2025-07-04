@@ -48,11 +48,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #Third party 
-    "django_hosts",
+    'django_hosts',
     'rest_framework',
 
     #my app
+    'accounts',
     'analytics',
+    'pages',
     'shortener',
 ]
 
