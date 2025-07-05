@@ -222,7 +222,7 @@ body {
 
 /* Ensure icons remain visible when input is focused */
 .input-group:focus-within .input-icon {
-  color: var(--main-color);
+  color: var(--text-secondary);
 }
 
 /* Fix for when input loses focus */

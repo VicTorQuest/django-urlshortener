@@ -1,15 +1,16 @@
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 from django.views import View
+from ipware import get_client_ip
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from analytics.models import Click
 from .models import Link
-from .utils import get_client_ip, get_or_set_cookie_id
+from .utils import get_or_set_cookie_id
 from .validators import clean_and_validate_url, is_banned, is_own_short_url
 from .serializers import LinkSerializer
 

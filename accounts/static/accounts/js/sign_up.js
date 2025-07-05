@@ -323,10 +323,11 @@ class SignUpHandler {
       }
 
       // Send signup request
-      const response = await fetch("", {
+      const response = await fetch("/accounts/sign-up/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "X-CSRFToken": getCookie('csrftoken')
         },
         body: JSON.stringify(userData),
       })

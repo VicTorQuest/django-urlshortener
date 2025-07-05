@@ -3,6 +3,7 @@ dj-database-url==2.3.0
 Django==5.1.7
 django-filter==25.1
 django-hosts==5.1
+django-ipware==7.0.1
 djangorestframework==3.16.0
 gunicorn==23.0.0
 Markdown==3.8.2
@@ -10,6 +11,7 @@ packaging==24.2
 polls==0.1
 psycopg2-binary==2.9.10
 python-dotenv==1.1.0
+python-ipware==3.0.0
 setuptools==75.8.0
 sqlparse==0.4.2
 typing_extensions==4.13.0

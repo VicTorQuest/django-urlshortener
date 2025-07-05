@@ -44,7 +44,7 @@ class SignInHandler {
 
     inputs.forEach((input) => {
       input.addEventListener("blur", () => this.validateField(input))
-      input.addEventListener("focus", () => this.clearFieldError(input))
+      input.addEventListener("input", () => this.clearFieldError(input))
     })
   }
 
@@ -68,7 +68,7 @@ class SignInHandler {
     this.removeCustomValidationIcon(input)
 
     switch (fieldName) {
-      case "loginField":
+      case "loginCredential":
         if (value.length < 1) {
           isValid = false
           errorMessage = "Please enter your username or email"
@@ -227,6 +227,14 @@ class SignInHandler {
     }, 5000)
   }
 
+  getCookie(name) {
+    const cookieValue = document.cookie
+      .split('; ')
+      .find(row => row.startsWith(name + '='))
+      ?.split('=')[1];
+    return cookieValue;
+  }
+
   // Handle signin form submission
   async handleSignin(e) {
     e.preventDefault()
@@ -248,16 +256,16 @@ class SignInHandler {
       // Collect form data
       const formData = new FormData(form)
       const loginData = {
-        loginField: formData.get("loginField"),
+        loginCredential: formData.get("loginCredential"),
         password: formData.get("password"),
-        rememberMe: formData.get("rememberMe") === "on",
       }
 
       // Send signin request
-      const response = await fetch("", {
+      const response = await fetch("/accounts/auth/sign-in/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "X-CSRFToken": this.getCookie('csrftoken')
         },
         body: JSON.stringify(loginData),
       })

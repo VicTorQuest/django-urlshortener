@@ -20,12 +20,3 @@ def create_short_code(instance, size):
 
 def get_or_set_cookie_id(request):
     return request.COOKIES.get('anon_id') or uuid.uuid4().hex
-
-def get_client_ip(request):
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    print(x_forwarded_for)
-    if x_forwarded_for:
-        ip = x_forwarded_for.split(',')[0]
-    else:
-        ip = request.META.get('REMOTE_ADDR')
-    return ip
