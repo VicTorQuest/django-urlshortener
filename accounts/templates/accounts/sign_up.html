@@ -17,8 +17,8 @@
                 <div class="col-lg-6 d-none d-lg-flex auth-brand-side">
                     <div class="brand-content">
                         <div class="brand-logo">
-                            <i class="bi bi-link-45deg" style="font-size: 3rem;"></i>
-                            <h1 class="brand-title">{{site_name}}</h1>
+                            <img src="{% static 'img/favicon.png' %}" class="logo-icon" width="88px" alt="">
+                            <h1 class="brand-title"><img src="{% static 'img/logo.png' %}" alt=""></h1>
                             <p class="brand-subtitle">Transform long URLs into powerful short links</p>
                         </div>
                         <div class="features-list">
@@ -129,9 +129,9 @@
                             <div class="mb-4">
                                 <div class="terms-text">
                                     By clicking on 'Sign Up', I agree to the 
-                                    <a href="#" class="terms-link">Terms of Service</a>, 
-                                    <a href="#" class="terms-link">Privacy Policy</a>, and 
-                                    <a href="#" class="terms-link">Use of Cookies</a>.
+                                    <a href="{% url 'terms' %}" class="terms-link">Terms of Service</a>, 
+                                    <a href="{% url "privacy_policy" %}" class="terms-link">Privacy Policy</a>, and 
+                                    <a href="{% url "cookie_policy" %}" class="terms-link">Use of Cookies</a>.
                                 </div>
                             </div>
 
@@ -144,7 +144,7 @@
 
                             <div class="text-center">
                                 <span class="switch-text">Already have an account? </span>
-                                <a href="signin.html" class="switch-link">Sign In</a>
+                                <a href="{% url 'sign_in_page' %}" class="switch-link">Sign In</a>
                             </div>
                         </form>
                     </div>

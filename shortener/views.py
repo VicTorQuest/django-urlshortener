@@ -72,7 +72,7 @@ def create_short_link(request):
 class UrlRedirectView(View):
     def get(self, request,  short_code, *args, **kwargs):
         obj = get_object_or_404(Link, short_code=short_code)
-        ip_address = get_client_ip(request)
+        ip_address, _ = get_client_ip(request)
         Click.objects.create(clicked_url=obj, ip_address=ip_address)
         return HttpResponseRedirect(obj.url)
     

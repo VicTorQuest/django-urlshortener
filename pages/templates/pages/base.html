@@ -132,8 +132,8 @@
             {% else %}
             <div class="d-flex auth-btns">
               <a class="nav-link text-white me-2 py-1 border border-white rounded log-in" aria-current="page"
-                href="{% url "sign_in" %}">Sign In</a>
-              <a class="nav-link text-white py-1 border border-dark bg-dark rounded sign-up" href="{% url "sign_up" %}">Sign Up</a>
+                href="{% url "sign_in_page" %}">Sign In</a>
+              <a class="nav-link text-white py-1 border border-dark bg-dark rounded sign-up" href="{% url "sign_up_page" %}">Sign Up</a>
             </div>
             {% endif %}
           </ul>
@@ -154,7 +154,7 @@
               <a href="" class="btn btn-light">View Analytics </a>
               <a href="" class="btn btn-dark">Shorten More URLs </a>
               {% else %}
-              <a href="{% url "sign_up" %}" class="btn btn-light">Sign Up</a>
+              <a href="{% url "sign_up_page" %}" class="btn btn-light">Sign Up</a>
               <button href="#ShortenerContainer" id="tryItNow" class="btn text-white bg-dark">Try It Now</button>
               {% endif %}
             </div>

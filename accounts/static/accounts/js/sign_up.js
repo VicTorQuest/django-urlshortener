@@ -12,6 +12,14 @@ class SignUpHandler {
     this.setupFormSubmission()
   }
 
+  getCookie(name) {
+    const cookieValue = document.cookie
+      .split('; ')
+      .find(row => row.startsWith(name + '='))
+      ?.split('=')[1];
+    return cookieValue;
+  }
+
   // Password visibility toggle functionality
   setupPasswordToggles() {
     const toggleButtons = document.querySelectorAll(".password-toggle")
@@ -144,9 +152,9 @@ class SignUpHandler {
         validationIcon.className = `validation-icon ${type}`
 
         if (type === "valid") {
-          validationIcon.innerHTML = '<i class="bi bi-check-circle-fill"></i>'
+          validationIcon.innerHTML = '<i class="bi bi-check-lg"></i>'
         } else {
-          validationIcon.innerHTML = '<i class="bi bi-exclamation-circle-fill"></i>'
+          validationIcon.innerHTML = '<i class="bi bi-exclamation-circle"></i>'
         }
 
         passwordGroup.appendChild(validationIcon)
@@ -283,7 +291,7 @@ class SignUpHandler {
     // Create new message
     const messageDiv = document.createElement("div")
     messageDiv.className = type === "success" ? "success-message" : "error-message"
-    messageDiv.textContent = message
+    messageDiv.innerHTML = message
 
     // Insert message at the top of the form
     form.insertBefore(messageDiv, form.firstChild)
@@ -323,11 +331,11 @@ class SignUpHandler {
       }
 
       // Send signup request
-      const response = await fetch("/accounts/sign-up/", {
+      const response = await fetch("/accounts/auth/sign-up/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-CSRFToken": getCookie('csrftoken')
+          "X-CSRFToken": this.getCookie('csrftoken')
         },
         body: JSON.stringify(userData),
       })
@@ -347,9 +355,16 @@ class SignUpHandler {
         // Remove all validation icons
         const validationIcons = document.querySelectorAll(".validation-icon")
         validationIcons.forEach((icon) => icon.remove())
+        setTimeout(()=> {
+          window.location.href = '/accounts/sign-in/';
+        }, 5000)
       } else {
-        const errorData = await response.json()
-        this.showMessage(form, errorData.message || "Failed to create account. Please try again.")
+        const errors = await response.json()
+        console.log(errors)
+        const bannerMsg = Object.values(errors)
+                           .flat()          // flatten lists
+                           .join("<br>");      // break into next error
+        this.showMessage(form, bannerMsg || "Failed to create account. Please try again.");
       }
     } catch (error) {
       console.error("Signup error:", error)

@@ -275,8 +275,7 @@ class SignInHandler {
 
         // Simulate redirect after success
         setTimeout(() => {
-          // window.location.href = '/dashboard';
-          console.log("Would redirect to link dashboard")
+          window.location.href = '/accounts/dashboard/';
         }, 1500)
       } else {
         const errorData = await response.json()

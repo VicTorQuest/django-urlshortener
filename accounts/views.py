@@ -6,6 +6,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
+from .serializers import SignUpSerializer
 
 User = get_user_model()
 
@@ -17,7 +18,7 @@ site_name = getattr(settings, 'SITE_NAME', 'Tynee')
 # Endpoints
 @api_view(['POST'])
 @permission_classes([AllowAny])
-def sign_in_user(request):
+def sign_in(request):
     """
     Signs a user in if the credentilas are correct
     Accepts JSON:
@@ -50,16 +51,23 @@ def sign_in_user(request):
         return Response({'username': user.username}, status=status.HTTP_200_OK)
     return Response({'error': 'Invalid username or password'}, status=status.HTTP_401_UNAUTHORIZED)
 
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def sign_up(request):
+    serializer = SignUpSerializer(data=request.data)
+    if serializer.is_valid():
+        user = serializer.save()
+        return Response({'username': user.username, 'message': 'User registered successfully',}, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # Pages
-def sign_in(request):
-    return render(request, 'accounts/sign_in.html', {
-        "site_name": site_name,
-        "support_email": support_email
-    })
+def sign_in_page(request):
+    return render(request, 'accounts/sign_in.html')
 
-def sign_up(request):
-    return render(request, 'accounts/sign_up.html', {
-        "site_name": site_name,
-        "support_email": support_email
+def sign_up_page(request):
+    return render(request, 'accounts/sign_up.html')
+
+def dashboard(request):
+    return render(request, 'accounts/dashboard.html', {
+
     })
