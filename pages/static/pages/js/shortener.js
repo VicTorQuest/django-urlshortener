@@ -9,11 +9,12 @@ const originalUrl = document.getElementById('originalUrl')
 const shortenedURL = document.getElementById('shortenedURL')
 const copyShortenedURL = document.getElementById('copyShortenedURL')
 
-
-tryItNow.addEventListener('click', ()=> {
-    urlInput.scrollIntoView({behavior: 'smooth'})
-    urlInput.focus()
-})
+if (tryItNow) {
+  tryItNow.addEventListener('click', ()=> {
+      urlInput.scrollIntoView({behavior: 'smooth'})
+      urlInput.focus()
+  })
+}
 
 
 async function shortenURL(url) {
